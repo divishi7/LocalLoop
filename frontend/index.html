@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LocalLoop | Discover Your Local World</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- GSAP ANIMATION LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         NAVBAR
+    =========================================== -->
+
+    <header class="navbar">
+
+        <a href="#" class="logo">
+            Local<span>Loop.</span>
+        </a>
+
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#services">Explore</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#" class="login-btn">Log In</a>
+            <a href="#" class="signup-btn">Join LocalLoop ↗</a>
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main>
+
+        <!-- ==========================================
+             HERO SECTION — FUTURISTIC CITY
+        =========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    YOUR NEIGHBOURHOOD, REIMAGINED
+                </span>
+
+                <h1>
+                    Discover Your
+                    <span>Local World.</span>
+                </h1>
+
+                <p>
+                    Find trusted local professionals, compare services
+                    and connect with people in your neighbourhood.
+                </p>
+
+                <a href="#services" class="hero-btn">
+                    Explore Services <span>↗</span>
+                </a>
+
+            </div>
+
+            <!-- CITY ILLUSTRATION -->
+
+            <div class="city-container">
+
+                <div class="city-glow"></div>
+
+                <img
+                    src="./images/cityscape.png"
+                    alt="Futuristic neon LocalLoop city"
+                    class="city-image"
+                >
+
+            </div>
+
+            <!-- SCROLL INDICATOR -->
+
+            <div class="scroll-indicator">
+                <span>SCROLL TO EXPLORE</span>
+                <div></div>
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             SERVICES SECTION — COSMIC UNIVERSE
+        =========================================== -->
+
+        <section class="services" id="services">
+
+            <!-- GALAXY BACKGROUND -->
+
+            <div class="galaxy-background"></div>
+
+            <div class="star-layer star-layer-one"></div>
+            <div class="star-layer star-layer-two"></div>
+
+            <div class="galaxy-glow"></div>
+
+            <!-- CENTRAL CONTENT -->
+
+            <div class="galaxy-content">
+
+                <span class="eyebrow">
+                    ENTER THE LOCALLOOP UNIVERSE
+                </span>
+
+                <h2>
+                    Explore Your
+                    <span>Services.</span>
+                </h2>
+
+                <p>
+                    Find your perfect service.
+                </p>
+
+                <span class="galaxy-description">
+                    Discover talented professionals waiting to make your life easier.
+                </span>
+
+                <a href="explore.html" class="galaxy-btn">
+                    Explore All Services <span>↗</span>
+                </a>
+
+            </div>
+
+            <!-- HOME SERVICES -->
+
+            <a
+                href="explore.html?category=Home%20Services"
+                class="service-orb orb-home"
+            >
+                <div class="orb-circle">
+                    <span>🏠</span>
+                </div>
+
+                <h3>Home Services</h3>
+            </a>
+
+            <!-- EDUCATION -->
+
+            <a
+                href="explore.html?category=Education"
+                class="service-orb orb-education"
+            >
+                <div class="orb-circle">
+                    <span>🎓</span>
+                </div>
+
+                <h3>Education</h3>
+            </a>
+
+            <!-- BEAUTY AND WELLNESS -->
+
+            <a
+                href="explore.html?category=Beauty%20%26%20Wellness"
+                class="service-orb orb-beauty"
+            >
+                <div class="orb-circle">
+                    <span>💄</span>
+                </div>
+
+                <h3>Beauty & Wellness</h3>
+            </a>
+
+            <!-- PHOTOGRAPHY -->
+
+            <a
+                href="explore.html?category=Photography"
+                class="service-orb orb-photo"
+            >
+                <div class="orb-circle">
+                    <span>📸</span>
+                </div>
+
+                <h3>Photography</h3>
+            </a>
+
+            <!-- REPAIRS -->
+
+            <a
+                href="explore.html?category=Repairs"
+                class="service-orb orb-repairs"
+            >
+                <div class="orb-circle">
+                    <span>⚙️</span>
+                </div>
+
+                <h3>Repairs</h3>
+            </a>
+
+            <!-- CLEANING -->
+
+            <a
+                href="explore.html?category=Cleaning"
+                class="service-orb orb-cleaning"
+            >
+                <div class="orb-circle">
+                    <span>✨</span>
+                </div>
+
+                <h3>Cleaning</h3>
+            </a>
+
+        </section>
+
+
+        <!-- ==========================================
+             FEATURED PROFESSIONALS — WATERFALL SCENE
+        =========================================== -->
+
+        <section class="featured" id="featured">
+
+            <div class="waterfall-scene">
+
+                <!-- LEFT CONTENT -->
+
+                <div class="waterfall-info">
+
+                    <span class="eyebrow">
+                        THE PEOPLE BEHIND LOCALLOOP
+                    </span>
+
+                    <h2>
+                        People Who Make
+                        <span>Life Easier.</span>
+                    </h2>
+
+                    <p class="waterfall-intro">
+                        Every neighbourhood has amazing people.
+                        Discover the professionals who make everyday life better.
+                    </p>
+
+                    <!-- PROFESSION LIST -->
+
+                    <div class="profession-list">
+
+                        <div class="profession-item">
+                            <span>01</span>
+                            <h3>Home Services</h3>
+                            <span class="profession-arrow">↗</span>
+                        </div>
+
+                        <div class="profession-item">
+                            <span>02</span>
+                            <h3>Education</h3>
+                            <span class="profession-arrow">↗</span>
+                        </div>
+
+                        <div class="profession-item">
+                            <span>03</span>
+                            <h3>Beauty & Wellness</h3>
+                            <span class="profession-arrow">↗</span>
+                        </div>
+
+                        <div class="profession-item">
+                            <span>04</span>
+                            <h3>Photography</h3>
+                            <span class="profession-arrow">↗</span>
+                        </div>
+
+                        <div class="profession-item">
+                            <span>05</span>
+                            <h3>Repairs</h3>
+                            <span class="profession-arrow">↗</span>
+                        </div>
+
+                        <div class="profession-item">
+                            <span>06</span>
+                            <h3>Cleaning</h3>
+                            <span class="profession-arrow">↗</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT SIDE — WATERFALL VISUAL -->
+
+                <div class="waterfall-visual">
+
+                    <div class="waterfall-light"></div>
+
+                    <!-- WATERFALL STREAMS -->
+
+                    <div class="waterfall-stream stream-one"></div>
+                    <div class="waterfall-stream stream-two"></div>
+                    <div class="waterfall-stream stream-three"></div>
+                    <div class="waterfall-stream stream-four"></div>
+
+                    <div class="waterfall-mist"></div>
+
+                    <!-- WATER POOL -->
+
+                    <div class="water-pool">
+
+                        <div class="water-ripple ripple-one"></div>
+                        <div class="water-ripple ripple-two"></div>
+                        <div class="water-ripple ripple-three"></div>
+
+                        <div class="water-reflection"></div>
+
+                    </div>
+
+                    <!-- FLOATING PARTICLES -->
+
+                    <div class="water-particles"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             HOW IT WORKS
+        =========================================== -->
+
+       <!-- ==========================================
+     HOW IT WORKS
+========================================== -->
+
+<section class="how-it-works" id="how-it-works">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">
+            SIMPLE. SEAMLESS. LOCAL.
+        </span>
+
+        <h2>
+            Three steps.
+            <span>One connection.</span>
+        </h2>
+
+        <p>
+            Finding the right professional has never been easier.
+        </p>
+
+    </div>
+
+    <!-- THREE STEPS -->
+
+    <div class="steps">
+
+        <!-- STEP 1 -->
+
+        <article class="step">
+
+            <span>01</span>
+
+            <div class="step-icon">⌕</div>
+
+            <h3>Discover</h3>
+
+            <p>
+                Explore services available in your neighbourhood.
+            </p>
+
+        </article>
+
+        <!-- STEP 2 -->
+
+        <article class="step">
+
+            <span>02</span>
+
+            <div class="step-icon">⇄</div>
+
+            <h3>Compare</h3>
+
+            <p>
+                Compare services and prices to find your perfect match.
+            </p>
+
+        </article>
+
+        <!-- STEP 3 -->
+
+        <article class="step">
+
+            <span>03</span>
+
+            <div class="step-icon">↗</div>
+
+            <h3>Connect</h3>
+
+            <p>
+                Contact your chosen professional directly.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     CINEMATIC FINAL SECTION
+========================================== -->
+
+<section class="final-scene" id="final-scene">
+
+    <div class="final-city">
+
+        <div class="final-overlay"></div>
+
+        <div class="final-brand">
+
+            <h2>LOCAL<span>LOOP</span></h2>
+
+            <p>Discover. Compare. Connect.</p>
+
+            <div class="brand-line"></div>
+
+        </div>
+
+        <div class="final-scroll">
+            <span>THE JOURNEY CONTINUES</span>
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer id="about">
+
+    <a href="#" class="logo">
+        Local<span>Loop.</span>
+    </a>
+
+    <h2>Your local world starts here.</h2>
+
+    <p>
+        Bringing neighbourhoods closer, one connection at a time.
+    </p>
+
+    <div class="footer-bottom">
+        © 2026 LocalLoop. All rights reserved.
+    </div>
+
+</footer>
+
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script src="./script.js"></script>
+
+</body>
+
+</html>
