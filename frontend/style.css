@@ -1,20 +1,30 @@
-/* =========================================
-   GLOBAL DESIGN
-========================================= */
+/* ==========================================
+   LOCALLOOP — RESTORED COLOUR VARIABLES
+========================================== */
 
 :root {
-    --background: #080624;
-    --secondary: #100A3B;
-    --card: #171044;
+    --background: #100D24;
+    --secondary: #191333;
+    --card: #211A40;
 
-    --cyan: #00E5FF;
-    --blue: #536DFF;
-    --purple: #843BFF;
-    --pink: #F000E8;
+    --purple: #A78BFA;
+    --purple-dark: #7565E8;
 
-    --text: #FFFFFF;
-    --muted: #B9B4D9;
+    --lavender: #EEEAFE;
+    --blue: #536DFE;
+
+    --text: #F5F3FF;
+    --muted: #C0BAD8;
+
+    --border: #352D58;
+
+    --shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
 }
+/* =========================================
+   LOCALLOOP — CLEAN LAVENDER DESIGN
+========================================= */
+
+
 
 * {
     margin: 0;
@@ -23,7 +33,7 @@
 }
 
 html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -34,222 +44,200 @@ body {
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
-
 
 /* =========================================
    NAVBAR
 ========================================= */
 
 .navbar {
-    height: 90px;
+    height: 82px;
     width: 100%;
     padding: 0 7%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     position: absolute;
     top: 0;
     left: 0;
     z-index: 100;
-
-    background: rgba(8,6,36,0.4);
-    backdrop-filter: blur(15px);
-
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(18, 14, 48, 0.42);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(14px);
 }
 
 .logo {
-    font-size: 32px;
+    font-size: 50px;
     font-weight: 800;
-    letter-spacing: -2px;
+    letter-spacing: -1.8px;
+    color: #fff;
 }
 
 .logo span {
-    background: linear-gradient(90deg, #A78BFA, #F000E8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #B9AEFF;
 }
 
 .navbar nav {
     display: flex;
-    gap: 38px;
+    align-items: center;
+    gap: 32px;
 }
 
 .navbar nav a {
-    color: #C7C3E4;
-    font-size: 14px;
-    transition: 0.3s;
+    color: rgba(255,255,255,.82);
+    font-size: 24px;
+    font-weight: 600;
+    transition: color .25s;
 }
 
 .navbar nav a:hover,
 .navbar nav a.active {
-    color: var(--cyan);
+    color: #C8BEFF;
 }
 
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 22px;
 }
 
 .login-btn {
-    font-size: 14px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .signup-btn {
-    padding: 14px 23px;
+    padding: 12px 21px;
     border-radius: 30px;
-
-    background: linear-gradient(100deg, #E000E8, #543BFF);
-
-    font-size: 13px;
+    background: var(--purple);
+    color: #fff;
+    font-size: 23px;
     font-weight: 700;
-
-    box-shadow: 0 0 25px rgba(180,0,255,0.3);
-    transition: 0.3s;
+    box-shadow: 0 8px 22px rgba(139,124,246,.28);
+    transition: transform .25s, background .25s;
 }
 
 .signup-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 35px rgba(180,0,255,0.6);
+    background: var(--purple-dark);
+    transform: translateY(-3px);
 }
 
-
 /* =========================================
-   HERO SECTION
+   HERO SECTION — ORIGINAL CITY ILLUSTRATION
 ========================================= */
 
 .hero {
-    min-height: 100vh;
+    min-height: 760px;
     height: 100vh;
-
+    max-height: 980px;
     position: relative;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     overflow: hidden;
-
     text-align: center;
+    isolation: isolate;
 
     background:
         radial-gradient(
-            ellipse at 50% 65%,
-            rgba(90,0,255,0.5),
+            ellipse at 50% 75%,
+            rgba(139,124,246,.28),
             transparent 55%
         ),
         linear-gradient(
-            180deg,
-            #080624 0%,
-            #100A45 55%,
-            #24005B 100%
+            145deg,
+            #171238 0%,
+            #21194E 52%,
+            #34266B 100%
         );
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    background: linear-gradient(
+        180deg,
+        rgba(16,12,43,.24),
+        rgba(20,15,52,.18) 48%,
+        rgba(24,18,59,.58)
+    );
 }
 
 .hero-content {
     position: relative;
     z-index: 5;
-
     width: 90%;
     max-width: 900px;
-
-    margin-top: 20px;
+    margin-top: -75px;
 }
 
 .eyebrow {
-    color: var(--cyan);
-
-    font-size: 20px;
+    display: inline-block;
+    color: var(--purple);
+    font-size: 22px;
     font-weight: 800;
+    letter-spacing: 3px;
+    line-height: 1.6;
+}
 
-    letter-spacing: 4px;
+.hero .eyebrow {
+    color: #D4CEFF;
 }
 
 .hero h1 {
-    font-size: clamp(100px, 10vw, 102px);
-    font-weight:1000;
-
-    line-height: 1.1;
+    color: #fff;
+    font-size: clamp(68px, calc(7.2vw + 10px), 104px);
+    font-weight: 800;
+    line-height: 1.08;
     letter-spacing: -4px;
-
     margin: 20px 0;
 }
 
 .hero h1 span {
     display: block;
-
-    background: linear-gradient(
-        90deg,
-        #00E5FF,
-        #7770FF,
-        #F000E8
-    );
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #C5BBFF;
 }
 
 .hero-content > p {
-    color: #E0DDF5;
-
-    font-size: 20px;
-    line-height: 1.8;
-
     max-width: 620px;
-    margin: auto;
+    margin: 0 auto;
+    color: rgba(255,255,255,.86);
+    font-size: 27px;
+    line-height: 1.8;
 }
 
 .hero-btn {
-    display: inline-block;
-
-    margin-top: 35px;
-    padding: 17px 38px;
-
-    border: 2px solid var(--cyan);
-    border-radius: 40px;
-
-    font-size: 30px;
-    font-weight: 700;
-
-    box-shadow:
-        0 0 12px rgba(0,229,255,0.3),
-        inset 0 0 12px rgba(0,229,255,0.1);
-
-    transition: 0.35s;
-}
-
-.hero-btn span {
-    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    padding: 15px 27px;
+    border-radius: 32px;
+    background: #fff;
+    color: #34266B;
+    font-size: 24px;
+    font-weight: 800;
+    box-shadow: 0 12px 30px rgba(0,0,0,.18);
+    transition: transform .25s, background .25s;
 }
 
 .hero-btn:hover {
-    color: #080624;
-    background: var(--cyan);
-
-    box-shadow: 0 0 35px rgba(0,229,255,0.7);
-
     transform: translateY(-4px);
+    background: var(--lavender);
 }
 
-
-/* =========================================
-   CITY ILLUSTRATION
-========================================= */
 .city-container {
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     z-index: 1;
     pointer-events: none;
 }
@@ -257,400 +245,641 @@ a {
 .city-glow {
     position: absolute;
     width: 100%;
-    height: 60%;
+    height: 48%;
     bottom: 0;
 
     background: radial-gradient(
         ellipse,
-        rgba(0,229,255,0.25),
-        rgba(240,0,232,0.2),
-        transparent 70%
+        rgba(183,168,255,.27),
+        rgba(139,124,246,.12),
+        transparent 72%
     );
 
-    filter: blur(45px);
+    filter: blur(35px);
 }
 
 .city-image {
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
-    object-fit: cover;
-    object-position: center center;
-
-    opacity: 1;
-    mix-blend-mode: screen;
-}
-
-.city-image {
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
     object-fit: cover;
     object-position: center bottom;
-
-    opacity: 0.98;
-
+    opacity: .88;
     mix-blend-mode: screen;
 }
-
-
-/* =========================================
-   SCROLL INDICATOR
-========================================= */
 
 .scroll-indicator {
     position: absolute;
-
-    bottom: 25px;
+    bottom: 23px;
     left: 50%;
-
     transform: translateX(-50%);
-
     z-index: 10;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
 }
 
 .scroll-indicator span {
-    font-size: 9px;
-    letter-spacing: 3px;
-    color: var(--muted);
+    color: rgba(255,255,255,.72);
+    font-size: 19px;
+    letter-spacing: 2.5px;
 }
 
 .scroll-indicator div {
     width: 1px;
-    height: 35px;
-
-    background: linear-gradient(
-        var(--cyan),
-        transparent
-    );
+    height: 32px;
+    background: linear-gradient(#C5BBFF, transparent);
 }
-
 
 /* =========================================
    COMMON SECTION HEADINGS
 ========================================= */
 
 .section-heading {
-    text-align: center;
-
     max-width: 800px;
-
-    margin: 0 auto 65px;
+    margin: 0 auto 52px;
+    text-align: center;
 }
 
 .section-heading h2 {
-    font-size: clamp(38px, 4vw, 62px);
-    line-height: 1.2;
-
+    margin: 17px 0;
+    color: var(--text);
+    font-size: clamp(46px, calc(4vw + 10px), 68px);
+    line-height: 1.16;
     letter-spacing: -2px;
-
-    margin: 22px 0;
 }
 
 .section-heading h2 span {
     display: block;
-
-    background: linear-gradient(
-        90deg,
-        var(--cyan),
-        #A78BFA,
-        var(--pink)
-    );
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: var(--purple);
 }
 
 .section-heading p {
     color: var(--muted);
-    font-size: 15px;
-    line-height: 1.9;
-}
-
-
-/* =========================================
-   SERVICES
-========================================= */
-
-.services {
-    min-height: 100vh;
-    padding: 110px 7%;
-
-    background:
-        radial-gradient(
-            ellipse at 50% 0%,
-            rgba(83,109,254,0.2),
-            transparent 60%
-        ),
-        #100A32;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 24px;
-}
-
-.category-card {
-    position: relative;
-
-    min-height: 220px;
-    padding: 30px;
-
-    background: rgba(35,25,85,0.7);
-
-    border: 1px solid rgba(0,229,255,0.15);
-    border-radius: 20px;
-
-    transition: 0.4s;
-}
-
-.category-card:hover {
-    transform: translateY(-10px);
-
-    border-color: var(--cyan);
-
-    box-shadow:
-        0 0 25px rgba(0,229,255,0.12),
-        0 0 45px rgba(130,50,255,0.1);
-}
-
-.card-number {
-    position: absolute;
-    right: 25px;
-    top: 25px;
-
-    color: rgba(255,255,255,0.3);
-    font-size: 12px;
-}
-
-.category-icon {
-    font-size: 35px;
-    color: var(--cyan);
-
-    margin-bottom: 30px;
-
-    text-shadow: 0 0 15px var(--cyan);
-}
-
-.category-card h3 {
-    font-size: 20px;
-    margin-bottom: 12px;
-}
-
-.category-card p {
-    color: var(--muted);
-    font-size: 13px;
+    font-size: 25px;
     line-height: 1.8;
 }
 
-
 /* =========================================
-   FEATURED PROFESSIONALS
+   SERVICES SECTION
 ========================================= */
 
-.featured {
-    min-height: 100vh;
-    padding: 110px 7%;
-
-    background:
-        radial-gradient(
-            ellipse at 50% 50%,
-            rgba(130,40,255,0.16),
-            transparent 65%
-        ),
-        #080624;
-}
-
-.featured-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 25px;
-}
-
-.provider-card {
-    padding: 32px;
-
-    border: 1px solid rgba(167,139,250,0.2);
-    border-radius: 22px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(35,25,85,0.9),
-        rgba(15,10,45,0.95)
-    );
-
-    transition: 0.4s;
-}
-
-.provider-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--pink);
-
-    box-shadow: 0 0 35px rgba(240,0,232,0.12);
-}
-
-.provider-icon {
-    width: 70px;
-    height: 70px;
+.services {
+    position: relative;
+    min-height: 780px;
+    height: auto;
+    padding: 105px 7%;
+    overflow: hidden;
 
     display: flex;
     align-items: center;
     justify-content: center;
+    isolation: isolate;
 
-    background: rgba(0,229,255,0.1);
-
-    border: 1px solid rgba(0,229,255,0.2);
-    border-radius: 18px;
-
-    font-size: 32px;
-
-    margin-bottom: 28px;
+    background: radial-gradient(
+        ellipse at 50% 45%,
+        #fff 0%,
+        rgba(238,234,254,.85) 48%,
+        #F8F7FC 100%
+    );
 }
 
-.provider-category {
-    color: var(--cyan);
+.galaxy-background,
+.star-layer,
+.galaxy-glow {
+    display: none;
+}
 
-    font-size: 10px;
+.galaxy-content {
+    position: relative;
+    z-index: 5;
+    width: 550px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.galaxy-content .eyebrow {
+    color: var(--purple);
+    font-size: 21px;
+    letter-spacing: 2.5px;
+}
+
+.galaxy-content h2 {
+    margin: 17px 0;
+    color: var(--text);
+    font-size: clamp(52px, calc(5vw + 10px), 72px);
     font-weight: 800;
-
-    letter-spacing: 2px;
+    line-height: 1.12;
+    letter-spacing: -2px;
 }
 
-.provider-card h3 {
-    font-size: 22px;
-    margin-top: 14px;
+.galaxy-content h2 span {
+    display: block;
+    color: var(--purple);
 }
 
-.provider-card > p {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 8px;
-}
-
-.provider-price {
-    margin-top: 30px;
-    padding-top: 20px;
-
-    border-top: 1px solid rgba(255,255,255,0.1);
-
-    font-size: 14px;
+.galaxy-content > p {
+    margin-bottom: 9px;
+    color: var(--text);
+    font-size: 29px;
     font-weight: 700;
 }
 
+.galaxy-description {
+    display: block;
+    color: var(--muted);
+    font-size: 23px;
+    line-height: 1.8;
+}
+
+.galaxy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 14px 24px;
+    border-radius: 30px;
+    background: var(--purple);
+    color: #fff;
+    font-size: 23px;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(139,124,246,.22);
+    transition: transform .25s, background .25s;
+}
+
+.galaxy-btn:hover {
+    background: var(--purple-dark);
+    transform: translateY(-3px);
+}
+
+/* FLOATING CATEGORY CARDS */
+
+.service-orb {
+    position: absolute;
+    z-index: 4;
+    width: 155px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    text-align: center;
+    animation: orbFloat 6s ease-in-out infinite;
+}
+
+.orb-circle {
+    width: 94px;
+    height: 94px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #E4DFFC;
+    border-radius: 28px;
+
+    background: rgba(255,255,255,.94);
+
+    box-shadow: 0 12px 30px rgba(79,62,150,.10);
+
+    transition: transform .3s, box-shadow .3s;
+}
+
+.orb-circle span {
+    font-size: 53px;
+    line-height: 1;
+}
+
+.service-orb h3 {
+    color: var(--text);
+    font-size: 23px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.orb-home {
+    top: 13%;
+    left: 14%;
+}
+
+.orb-education {
+    top: 13%;
+    right: 14%;
+    animation-delay: -1s;
+}
+
+.orb-beauty {
+    top: 43%;
+    left: 5%;
+    animation-delay: -2s;
+}
+
+.orb-photo {
+    top: 43%;
+    right: 5%;
+    animation-delay: -3s;
+}
+
+.orb-repairs {
+    bottom: 8%;
+    left: 20%;
+    animation-delay: -1.5s;
+}
+
+.orb-cleaning {
+    bottom: 8%;
+    right: 20%;
+    animation-delay: -2.5s;
+}
+
+.service-orb:hover .orb-circle {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 18px 36px rgba(79,62,150,.17);
+}
+
+@keyframes orbFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+/* =========================================
+   FEATURED PROFESSIONALS — WATERFALL
+========================================= */
+
+.featured {
+    position: relative;
+    width: 100%;
+    min-height: 720px;
+    height: 90vh;
+    max-height: 900px;
+    padding: 0;
+    overflow: hidden;
+    background: #EDEAF8;
+}
+
+.waterfall-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 720px;
+    overflow: hidden;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(248,247,252,.98) 0%,
+            rgba(248,247,252,.94) 36%,
+            rgba(248,247,252,.28) 67%,
+            rgba(248,247,252,.04) 100%
+        ),
+        url("./images/waterfall-scene.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.waterfall-info {
+    position: absolute;
+    z-index: 5;
+    left: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 43%;
+    max-width: 550px;
+}
+
+.waterfall-info .eyebrow {
+    display: block;
+    color: var(--purple);
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+    margin-bottom: 18px;
+}
+
+.waterfall-info h2 {
+    color: var(--text);
+    font-size: clamp(49px, calc(4.5vw + 10px), 72px);
+    line-height: 1.12;
+    letter-spacing: -2.5px;
+    margin-bottom: 17px;
+    white-space: normal;
+}
+
+.waterfall-info h2 span {
+    display: block;
+    color: var(--purple);
+    white-space: normal;
+}
+
+.waterfall-intro {
+    max-width: 430px;
+    color: #625F75;
+    font-size: 24px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.profession-list {
+    width: 100%;
+    max-width: 420px;
+}
+
+.profession-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 8px;
+    border-bottom: 1px solid rgba(95,82,145,.15);
+    transition: padding .25s, background .25s;
+    cursor: pointer;
+}
+
+.profession-item > span:first-child {
+    color: var(--purple);
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.profession-item h3 {
+    flex: 1;
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.profession-arrow {
+    color: var(--purple);
+    font-size: 29px;
+    transition: transform .25s;
+}
+
+.profession-item:hover {
+    padding-left: 15px;
+    background: rgba(255,255,255,.55);
+}
+
+.profession-item:hover .profession-arrow {
+    transform: translateX(5px);
+}
+
+.waterfall-visual {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.waterfall-light,
+.waterfall-stream,
+.waterfall-mist,
+.water-pool,
+.water-particles {
+    opacity: .12;
+}
 
 /* =========================================
    HOW IT WORKS
 ========================================= */
 
 .how-it-works {
-    min-height: 100vh;
-    padding: 110px 7%;
+    position: relative;
+    min-height: 700px;
+    padding: 105px 7%;
+    overflow: hidden;
 
-    background:
-        radial-gradient(
-            ellipse at 50% 100%,
-            rgba(0,229,255,0.12),
-            transparent 60%
-        ),
-        #100A32;
+    background: linear-gradient(
+        180deg,
+        #F8F7FC 0%,
+        #F0EDFA 100%
+    );
+}
+
+.how-it-works::before,
+.how-it-works::after {
+    display: none;
+}
+
+.how-it-works .section-heading {
+    position: relative;
+    z-index: 2;
+}
+
+.how-it-works .section-heading h2,
+.how-it-works .section-heading p {
+    text-shadow: none;
 }
 
 .steps {
+    position: relative;
+    z-index: 2;
+
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    gap: 25px;
+    gap: 24px;
+
+    max-width: 1120px;
+    margin: 0 auto;
 }
 
-.step {
-    padding: 35px;
+.how-it-works .step {
+    position: relative;
+    z-index: 2;
+    min-height: 280px;
+    padding: 32px;
 
-    background: rgba(35,25,85,0.65);
-
-    border: 1px solid rgba(0,229,255,0.15);
+    border: 1px solid var(--border);
     border-radius: 22px;
 
-    transition: 0.4s;
+    background: rgba(255,255,255,.94) !important;
+
+    box-shadow: 0 12px 32px rgba(56,44,112,.06);
+
+    transition: transform .3s, box-shadow .3s;
 }
 
-.step:hover {
-    transform: translateY(-10px);
-    border-color: var(--cyan);
+.how-it-works .step:hover {
+    transform: translateY(-7px) !important;
+    box-shadow: var(--shadow);
 }
 
-.step > span {
-    color: var(--pink);
-    font-size: 13px;
+.how-it-works .step > span {
+    color: #B1A7F5;
+    font-size: 24px;
     font-weight: 800;
 }
 
-.step-icon {
-    font-size: 35px;
-    color: var(--cyan);
-    margin: 25px 0;
+.how-it-works .step-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 24px 0;
+
+    border-radius: 18px;
+    background: var(--lavender);
+    color: var(--purple);
+    font-size: 39px;
 }
 
-.step h3 {
+.how-it-works .step h3 {
+    margin-bottom: 10px;
+    color: var(--text) !important;
+    font-size: 31px;
+}
+
+.how-it-works .step p {
+    color: var(--muted) !important;
     font-size: 24px;
-    margin-bottom: 12px;
-}
-
-.step p {
-    color: var(--muted);
-    font-size: 14px;
     line-height: 1.8;
 }
 
+/* =========================================
+   FINAL CITY SCENE
+========================================= */
+
+.final-scene {
+    position: relative;
+    width: 100%;
+    height: 78vh;
+    min-height: 560px;
+    overflow: hidden;
+    background: #21194E;
+}
+
+.final-city {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(25,19,65,.12),
+            rgba(25,19,65,.48)
+        ),
+        url("./images/localloop-ending.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.final-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        90deg,
+        rgba(25,19,65,.20),
+        transparent 50%,
+        rgba(25,19,65,.18)
+    );
+}
+
+.final-brand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    z-index: 5;
+    width: 90%;
+}
+
+.final-brand h2 {
+    color: #fff;
+    font-size: clamp(64px, calc(8vw + 10px), 110px);
+    font-weight: 800;
+    letter-spacing: 6px;
+    margin-bottom: 14px;
+    text-shadow: 0 5px 25px rgba(0,0,0,.22);
+}
+
+.final-brand h2 span {
+    color: #C5BBFF;
+}
+
+.final-brand p {
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 4px;
+    font-weight: 600;
+}
+
+.brand-line {
+    width: 80px;
+    height: 3px;
+    margin: 25px auto;
+    border-radius: 4px;
+    background: #C5BBFF;
+}
+
+.final-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,.85);
+    font-size: 19px;
+    letter-spacing: 3px;
+    z-index: 5;
+}
 
 /* =========================================
    FOOTER
 ========================================= */
 
 footer {
-    padding: 75px 7% 30px;
-
+    padding: 65px 7% 25px;
     text-align: center;
+    background: #fff;
+    border-top: 1px solid var(--border);
+}
 
-    background: #06041B;
+footer .logo {
+    color: var(--text);
+}
 
-    border-top: 1px solid rgba(0,229,255,0.15);
+footer .logo span {
+    color: var(--purple);
 }
 
 footer h2 {
-    font-size: 38px;
-    margin-top: 30px;
+    margin-top: 24px;
+    color: var(--text);
+    font-size: 42px;
+    letter-spacing: -1px;
 }
 
 footer > p {
+    margin-top: 12px;
     color: var(--muted);
-    font-size: 14px;
-    margin-top: 15px;
+    font-size: 24px;
+    line-height: 1.7;
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
-
-    margin-top: 55px;
-    padding-top: 25px;
-
+    margin-top: 45px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
     color: var(--muted);
-    font-size: 11px;
+    font-size: 21px;
 }
-
 
 /* =========================================
    RESPONSIVE DESIGN
@@ -663,29 +892,44 @@ footer > p {
     }
 
     .navbar nav {
-        gap: 15px;
+        gap: 17px;
     }
 
-    .hero h1 {
-        font-size: 65px;
+    .service-orb {
+        width: 130px;
     }
 
-    .category-grid,
-    .featured-grid {
-        grid-template-columns: repeat(2,1fr);
+    .orb-circle {
+        width: 78px;
+        height: 78px;
+        border-radius: 23px;
     }
 
+    .orb-circle span {
+        font-size: 45px;
+    }
+
+    .orb-home { left: 8%; }
+    .orb-education { right: 8%; }
+    .orb-beauty { left: 2%; }
+    .orb-photo { right: 2%; }
+    .orb-repairs { left: 13%; }
+    .orb-cleaning { right: 13%; }
+
+    .waterfall-info {
+        width: 48%;
+    }
 }
 
 @media (max-width: 700px) {
 
     .navbar {
-        height: 75px;
+        height: 72px;
         padding: 0 5%;
     }
 
     .logo {
-        font-size: 40px;
+        font-size: 35px;
     }
 
     .navbar nav {
@@ -697,1437 +941,457 @@ footer > p {
     }
 
     .login-btn {
-        font-size: 12px;
+        font-size: 22px;
     }
 
     .signup-btn {
-        padding: 11px 14px;
-        font-size: 11px;
+        padding: 10px 13px;
+        font-size: 21px;
     }
 
     .hero {
-        min-height: 750px;
-        height: auto;
-        padding-top: 150px;
+        min-height: 720px;
+        height: 100svh;
     }
 
     .hero-content {
-        margin-top: -150px;
+        margin-top: -30px;
     }
 
     .hero h1 {
-        font-size: 45px;
+        font-size: clamp(53px, calc(11vw + 10px), 74px);
         letter-spacing: -2px;
     }
 
     .hero-content > p {
-        font-size: 13px;
-    }
-
-    .city-container {
-        height: 42%;
+        font-size: 24px;
     }
 
     .city-image {
         object-position: center bottom;
     }
 
-    .scroll-indicator {
-        display: none;
+    .services {
+        min-height: 850px;
+        padding: 75px 5%;
+        display: block;
     }
 
-    .services,
-    .featured,
+    .galaxy-content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .galaxy-content h2 {
+        font-size: 49px;
+    }
+
+    .service-orb {
+        width: 120px;
+        gap: 8px;
+    }
+
+    .orb-circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
+    }
+
+    .orb-circle span {
+        font-size: 41px;
+    }
+
+    .service-orb h3 {
+        font-size: 21px;
+    }
+
+    .orb-home { top: 43%; left: 8%; }
+    .orb-education { top: 43%; right: 8%; }
+    .orb-beauty { top: 61%; left: 8%; }
+    .orb-photo { top: 61%; right: 8%; }
+    .orb-repairs { bottom: 5%; left: 8%; }
+    .orb-cleaning { bottom: 5%; right: 8%; }
+
+    .featured {
+        height: auto;
+        min-height: 850px;
+    }
+
+    .waterfall-scene {
+        min-height: 850px;
+        background-position: 62% center;
+
+        background-image:
+            linear-gradient(
+                180deg,
+                rgba(248,247,252,.97) 0%,
+                rgba(248,247,252,.94) 58%,
+                rgba(248,247,252,.25) 100%
+            ),
+            url("./images/waterfall-scene.png");
+    }
+
+    .waterfall-info {
+        left: 6%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 88%;
+        max-width: none;
+    }
+
+    .waterfall-info h2 {
+        font-size: 52px;
+    }
+
+    .profession-item h3 {
+        font-size: 23px;
+    }
+
     .how-it-works {
-        padding: 85px 6%;
+        padding: 80px 6%;
+    }
+
+    .section-heading {
+        margin-bottom: 38px;
     }
 
     .section-heading h2 {
-        font-size: 36px;
+        font-size: 46px;
     }
 
-    .category-grid,
-    .featured-grid,
     .steps {
         grid-template-columns: 1fr;
     }
 
-    footer h2 {
-        font-size: 28px;
+    .how-it-works .step {
+        min-height: 230px;
     }
 
+    .final-scene {
+        height: 65vh;
+        min-height: 450px;
+    }
+
+    .final-brand h2 {
+        font-size: 53px;
+        letter-spacing: 3px;
+    }
+
+    .final-brand p {
+        font-size: 21px;
+        letter-spacing: 2px;
+    }
+
+    footer {
+        padding: 55px 6% 22px;
+    }
+
+    footer h2 {
+        font-size: 35px;
+    }
 }
-/* MOVE HERO TEXT UP */
-.hero-content {
-    position: relative;
-    top: -150px !important;
+
+/* ACCESSIBILITY — REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
 }
-.navbar nav a {
+/* =========================================
+   LOCALLOOP — DARK PURPLE THEME FIX
+========================================= */
+
+/* SERVICES SECTION */
+.services {
+    background: linear-gradient(
+        135deg,
+        #100D24 0%,
+        #191333 50%,
+        #211A40 100%
+    ) !important;
+}
+
+.galaxy-content h2 {
+    color: #F5F3FF !important;
+}
+
+.galaxy-content > p {
+    color: #F5F3FF !important;
+}
+
+.galaxy-description {
+    color: #C0BAD8 !important;
+}
+
+.service-orb h3 {
+    color: #F5F3FF !important;
+}
+
+.orb-circle {
+    background: #211A40 !important;
+    border-color: #493D75 !important;
+}
+
+/* FEATURED PROFESSIONALS SECTION */
+.featured {
+    background: #100D24 !important;
+}
+
+.waterfall-scene {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(16,13,36,.97) 0%,
+            rgba(16,13,36,.90) 36%,
+            rgba(16,13,36,.40) 67%,
+            rgba(16,13,36,.12) 100%
+        ),
+        url("./images/waterfall-scene.png") !important;
+}
+
+.waterfall-info h2 {
+    color: #F5F3FF !important;
+}
+
+.waterfall-intro {
+    color: #C0BAD8 !important;
+}
+
+.profession-item h3 {
+    color: #F5F3FF !important;
+}
+
+.profession-item {
+    border-bottom-color: #352D58 !important;
+}
+
+/* HOW IT WORKS — FINAL DARK SECTION WITH WHITE CARDS */
+
+.how-it-works {
+    min-height: 100vh !important;
+    padding: 90px 7% !important;
+    background: linear-gradient(
+        135deg,
+        #100D24,
+        #191333,
+        #211A40
+    ) !important;
+}
+
+.how-it-works .section-heading h2 {
+    color: #FFFFFF !important;
+    font-size: 64px !important;
+}
+
+.how-it-works .section-heading p {
+    color: #E0D9F5 !important;
+    font-size: 24px !important;
+}
+
+.how-it-works .steps {
+    max-width: 1250px !important;
+    gap: 35px !important;
+}
+
+.how-it-works .step {
+    min-height: 340px !important;
+    padding: 38px !important;
+    background: #FFFFFF !important;
+    border: 2px solid #DCD2FF !important;
+    border-radius: 26px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-shadow: 0 0 25px rgba(167,139,250,.4) !important;
+}
+
+.how-it-works .step > span {
+    color: #7565E8 !important;
+    font-size: 28px !important;
+}
+
+.how-it-works .step-icon {
+    width: 68px !important;
+    height: 68px !important;
+    font-size: 36px !important;
+    background: #EEEAFE !important;
+    color: #7565E8 !important;
+}
+
+.how-it-works .step h3 {
+    color: #24213A !important;
     font-size: 30px !important;
 }
 
-.logo {
-    font-size: 50px !important;
-}
-/* LOGIN BUTTON */
-.login-btn {
-    font-size: 30px !important;
-    font-weight: 600;
+.how-it-works .step p {
+    color: #514A68 !important;
+    font-size: 22px !important;
+    line-height: 1.8 !important;
 }
 
-/* JOIN LOCALLOOP BUTTON */
-.signup-btn {
-    font-size: 20px !important;
-    font-weight: 700;
-    padding: 16px 28px !important;
-    border-radius: 35px;
+.how-it-works .step:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 0 35px rgba(167,139,250,.65) !important;
 }
-/* ==========================================
-   LOCALLOOP GALAXY SERVICES
-========================================== */
+/* FOOTER */
+footer {
+    background: #100D24 !important;
+    border-top-color: #352D58 !important;
+}
+
+footer .logo,
+footer h2 {
+    color: #F5F3FF !important;
+}
+
+footer > p,
+.footer-bottom {
+    color: #C0BAD8 !important;
+}
+
+.footer-bottom {
+    border-top-color: #352D58 !important;
+}
+/* FIX WHITE EMPTY AREA */
+
+html,
+body {
+    background-color: #100D24 !important;
+}
+
+.final-scene {
+    display: block;
+    width: 100%;
+    min-height: 560px;
+    height: 78vh;
+    background-color: #100D24 !important;
+}
+
+.final-city {
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    background-color: #191333 !important;
+}
+/* SERVICES SECTION — FULL SCREEN */
 
 .services {
-    position: relative;
-    min-height: 100vh;
-    height: 100vh;
-    padding: 0;
-    overflow: hidden;
+    width: 100%;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    padding: 100px 7% !important;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #02020a;
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #100D24,
+        #191333,
+        #211A40
+    ) !important;
 }
 
-/* GALAXY IMAGE */
+/* Keep category cards positioned inside the section */
 
-.galaxy-background {
-    position: absolute;
-    inset: 0;
-
-    background-image: url("./images/galaxy.png");
-    background-size: cover;
-    background-position: center;
-
-    opacity: 0.85;
-    z-index: 0;
-
-    animation: galaxyDrift 35s linear infinite alternate;
+.service-orb {
+    z-index: 4;
 }
 
-@keyframes galaxyDrift {
-    from {
-        transform: scale(1) translate(0, 0);
-    }
-
-    to {
-        transform: scale(1.15) translate(-2%, 1%);
-    }
-}
-
-/* STAR LAYERS */
-
-.star-layer {
-    position: absolute;
-    inset: -50%;
-
-    pointer-events: none;
-    z-index: 1;
-
-    background-image:
-        radial-gradient(2px 2px at 20% 30%, white, transparent),
-        radial-gradient(2px 2px at 70% 60%, white, transparent),
-        radial-gradient(1px 1px at 40% 80%, white, transparent),
-        radial-gradient(2px 2px at 85% 20%, white, transparent),
-        radial-gradient(1px 1px at 10% 70%, white, transparent);
-
-    background-size: 250px 250px;
-
-    animation: starMovement 45s linear infinite;
-}
-
-.star-layer-two {
-    opacity: 0.5;
-    background-size: 170px 170px;
-    animation-duration: 70s;
-    animation-direction: reverse;
-}
-
-@keyframes starMovement {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(250px);
-    }
-}
-
-/* COSMIC GLOW */
-
-.galaxy-glow {
-    position: absolute;
-
-    width: 650px;
-    height: 650px;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    background: radial-gradient(
-        circle,
-        rgba(91, 35, 255, 0.19),
-        rgba(0, 180, 255, 0.08),
-        transparent 70%
-    );
-
-    filter: blur(40px);
-    z-index: 1;
-
-    animation: glowPulse 6s ease-in-out infinite alternate;
-}
-
-@keyframes glowPulse {
-    from {
-        opacity: 0.5;
-        scale: 0.9;
-    }
-
-    to {
-        opacity: 1;
-        scale: 1.15;
-    }
-}
-
-/* CENTRAL CONTENT */
+/* Keep central heading centred */
 
 .galaxy-content {
     position: relative;
     z-index: 5;
-
-    text-align: center;
-    width: 550px;
-    max-width: 90%;
 }
 
-.galaxy-content .eyebrow {
-    color: #00e5ff;
-    font-size: 11px;
-    letter-spacing: 4px;
+/* Desktop screen adjustment */
+
+@media (min-width: 1001px) {
+    .services {
+        height: 100vh !important;
+        min-height: 100vh !important;
+    }
 }
-
-.galaxy-content h2 {
-    font-size: 53px;
-    font-weight: 800;
-    line-height: 1.15;
-    margin: 20px 0;
-    letter-spacing: -2px;
-}
-
-.galaxy-content h2 span {
-    display: block;
-
-    background: linear-gradient(
-        90deg,
-        #00e5ff,
-        #8870ff,
-        #f000e8
-    );
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.galaxy-content > p {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.galaxy-description {
-    display: block;
-    color: #c2bddc;
-    font-size: 13px;
-    line-height: 1.8;
-}
-
-/* CENTRAL BUTTON */
-
-.galaxy-btn {
-    display: inline-block;
-
-    margin-top: 28px;
-    padding: 14px 28px;
-
-    border: 1px solid #00e5ff;
-    border-radius: 40px;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    color: white;
-
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-
-    transition: 0.3s;
-}
-
-.galaxy-btn:hover {
-    background: #00e5ff;
-    color: #05051a;
-
-    box-shadow: 0 0 35px rgba(0, 229, 255, 0.6);
-
-    transform: translateY(-4px);
-}
-
-/* FLOATING ORBS */
-
-.service-orb {
-    position: absolute;
-    z-index: 4;
-
-    width: 155px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 13px;
-
-    text-align: center;
-
-    animation: orbFloat 5s ease-in-out infinite;
-
-    transition: filter 0.3s;
-}
-
-.orb-circle {
-    width: 105px;
-    height: 105px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 50%;
-
-    background: radial-gradient(
-        circle at 30% 25%,
-        rgba(115, 80, 255, 0.35),
-        rgba(8, 8, 35, 0.9) 70%
-    );
-
-    border: 1px solid rgba(0, 229, 255, 0.7);
-
-    box-shadow:
-        0 0 15px rgba(0, 229, 255, 0.35),
-        inset 0 0 25px rgba(125, 70, 255, 0.25);
-
-    backdrop-filter: blur(12px);
-
-    transition: 0.4s;
-}
+/* INCREASE CATEGORY ICON SIZE BY 20PX */
 
 .orb-circle span {
-    font-size: 70px;
-    filter: drop-shadow(0 0 12px #a76bff);
-}
-
-.service-orb h3 {
-    font-size: 13px;
-    font-weight: 600;
-    color: white;
-    white-space: nowrap;
-}
-
-/* ORB POSITIONS */
-
-.orb-home {
-    top: 12%;
-    left: 13%;
-}
-
-.orb-education {
-    top: 12%;
-    right: 14%;
-    animation-delay: -1s;
-}
-
-.orb-beauty {
-    top: 42%;
-    left: 5%;
-    animation-delay: -2s;
-}
-
-.orb-photo {
-    top: 42%;
-    right: 5%;
-    animation-delay: -3s;
-}
-
-.orb-repairs {
-    bottom: 7%;
-    left: 20%;
-    animation-delay: -1.5s;
-}
-
-.orb-cleaning {
-    bottom: 7%;
-    right: 20%;
-    animation-delay: -2.5s;
-}
-
-/* FLOATING MOVEMENT */
-
-@keyframes orbFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-18px);
-    }
-}
-
-/* HOVER EFFECT */
-
-@media (hover: hover) and (pointer: fine) {
-    .service-orb:hover .orb-circle {
-        transform: scale(1.18);
-
-        border-color: #f000e8;
-
-        box-shadow:
-            0 0 25px #00e5ff,
-            0 0 50px rgba(240, 0, 232, 0.5);
-    }
-
-    .service-orb:hover {
-        filter: brightness(1.3);
-    }
-}
-
-/* REDUCED MOTION */
-
-@media (prefers-reduced-motion: reduce) {
-    .galaxy-background,
-    .star-layer,
-    .galaxy-glow,
-    .service-orb {
-        animation: none;
-    }
-}
-/* ICON SIZE TEST */
-.services .service-orb .orb-circle span {
-    font-size: 150px !important;
-}
-/* GALAXY SECTION — INCREASE ALL TEXT SIZES */
-
-.services .galaxy-content .eyebrow {
-    font-size: 30px !important;
-}
-
-.services .galaxy-content h2 {
     font-size: 100px !important;
-    line-height: 1.15;
 }
 
-.services .galaxy-content > p {
-    font-size: 35px !important;
+/* Keep icons properly centred */
+.orb-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+/* SERVICES — LARGER ICONS, CLOSER POSITIONING */
 
-.services .galaxy-description {
-    font-size: 25px !important;
-    line-height: 1.8;
-}
-
-.services .galaxy-btn {
-    font-size: 25px !important;
-    padding: 17px 32px;
-}
-
-.services .service-orb h3 {
-    font-size: 20px !important;
-}
-/* FIX SERVICE ORB ICONS AND LABELS */
-
-.services .service-orb {
-    gap: 22px !important;
-    width: 190px;
-    z-index: 10;
-}
-
-.services .service-orb .orb-circle {
-    width: 125px !important;
-    height: 125px !important;
+/* Icon boxes */
+.services .orb-circle {
+    width: 145px !important;
+    height: 145px !important;
     flex-shrink: 0;
 }
 
-.services .service-orb .orb-circle span {
-    font-size: 150px !important;
-    line-height: 1;
+/* Actual icons */
+.services .orb-circle span {
+    font-size: 120px !important;
+    line-height: 1 !important;
 }
 
-.services .service-orb h3 {
-    position: relative;
-    z-index: 20;
-    display: block;
-    margin-top: 15px !important;
-    font-size: 25px !important;
-    color: #ffffff !important;
-    white-space: nowrap;
-    text-shadow: 0 0 10px #8b5cf6;
-}
-/* ==========================================
-   LOCALLOOP — CINEMATIC WATERFALL SCENE
-========================================== */
-
-.featured {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    height: 100vh;
-    padding: 0;
-    overflow: hidden;
-    background: #080624;
+/* Give category groups enough width */
+.services .service-orb {
+    width: 180px !important;
 }
 
-.waterfall-scene {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 750px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background:
-        radial-gradient(
-            ellipse at 75% 45%,
-            rgba(83, 109, 255, 0.2),
-            transparent 55%
-        ),
-        linear-gradient(
-            110deg,
-            #080624 0%,
-            #100A35 45%,
-            #090725 100%
-        );
+/* Bring all six categories inward */
+.services .orb-home {
+    left: 19% !important;
 }
 
-/* LEFT CONTENT */
-
-.waterfall-info {
-    position: relative;
-    z-index: 5;
-    width: 43%;
-    padding: 30px 0 60px 7%;
-    margin-top: -50px;
+.services .orb-education {
+    right: 19% !important;
 }
 
-.waterfall-info .eyebrow {
-    display: block;
-    color: #00E5FF;
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
+.services .orb-beauty {
+    left: 12% !important;
 }
 
-.waterfall-info h2 {
-    font-size: clamp(70px, 8vw, 60px);
-    line-height: 1.08;
-    letter-spacing: -3px;
-    margin-bottom: 18px;
+.services .orb-photo {
+    right: 12% !important;
 }
 
-.waterfall-info h2 span {
-    display: block;
-    background: linear-gradient(
-        90deg,
-        #00E5FF,
-        #8870FF,
-        #F000E8
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+.services .orb-repairs {
+    left: 25% !important;
 }
 
-.waterfall-intro {
-    max-width: 440px;
-    color: #B9B4D9;
-    font-size: 25px;
-    line-height: 1.7;
-    margin-bottom: 24px;
+.services .orb-cleaning {
+    right: 25% !important;
 }
-.profession-list {
-    width: 100%;
-    max-width: 440px;
-}
-
-.profession-item {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    padding: 14px 5px;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    transition: 0.4s ease;
-    cursor: pointer;
-}
-
-.profession-item > span:first-child {
-    color: #00E5FF;
-    font-size: 25px;
-    font-weight: 700;
-}
-
-.profession-item h3 {
-    flex: 1;
-    color: #FFFFFF;
-    font-size: 25px;
-    font-weight: 600;
-}
-
-.profession-arrow {
-    color: #A78BFA;
-    font-size: 25px;
-    transition: 0.3s;
-}
-
-.profession-item:hover {
-    padding-left: 15px;
-    border-color: #00E5FF;
-    background: rgba(0,229,255,0.04);
-}
-
-.profession-item:hover .profession-arrow {
-    color: #00E5FF;
-    transform: translateX(8px);
-}
-
-/* ==========================================
-   LOCALLOOP — CINEMATIC WATERFALL SCENE
-========================================== */
-
-.featured {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 750px;
-    padding: 0;
-    overflow: hidden;
-    background: #080624;
-}
-
-.waterfall-scene {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(8, 6, 36, 0.12),
-            transparent 65%
-        ),
-        url("./images/waterfall-scene.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* LEFT SIDE TEXT */
-
-.waterfall-info {
-    position: absolute;
-    z-index: 5;
-
-    left: 6%;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 36%;
-    max-width: 510px;
-}
-
-.waterfall-info .eyebrow {
-    display: block;
-    color: #00E5FF;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    margin-bottom: 22px;
-}
-
-.waterfall-info h2 {
-    font-size: clamp(40px, 4.2vw, 65px);
-    line-height: 1.12;
-    letter-spacing: -3px;
-    margin-bottom: 20px;
-}
-
-.waterfall-info h2 span {
-    display: block;
-
-    background: linear-gradient(
-        90deg,
-        #00E5FF,
-        #8870FF,
-        #F000E8
-    );
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.waterfall-intro {
-    color: #D0CBEA;
-    font-size: 14px;
-    line-height: 1.8;
-    margin-bottom: 24px;
-    max-width: 420px;
-}
-
-/* PROFESSION NAMES */
-
-.profession-list {
-    width: 100%;
-    max-width: 440px;
-}
-
-.profession-item {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-
-    padding: 11px 12px;
-    margin-bottom: 3px;
-
-    border-bottom: 1px solid rgba(255,255,255,0.13);
-
-    transition: 0.35s ease;
-    cursor: pointer;
-}
-
-.profession-item > span:first-child {
-    color: #00E5FF;
-    font-size: 15px;
-    font-weight: 800;
-}
-
-.profession-item h3 {
-    flex: 1;
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
-}
-
-.profession-arrow {
-    color: #C5A5FF;
-    font-size: 21px;
-    transition: 0.3s;
-}
-
-.profession-item:hover {
-    padding-left: 22px;
-    background: rgba(0,229,255,0.08);
-    border-color: #00E5FF;
-    box-shadow: 0 0 20px rgba(0,229,255,0.12);
-}
-
-.profession-item:hover .profession-arrow {
-    transform: translateX(7px);
-    color: #00E5FF;
-}
-
-/* ANIMATION OVERLAY */
-
-.waterfall-visual {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    z-index: 2;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-/* WATERFALL SHIMMER */
-
-.waterfall-light {
-    position: absolute;
-
-    left: 42%;
-    top: 0;
-
-    width: 25%;
-    height: 78%;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(0,229,255,0.10),
-        rgba(255,255,255,0.18),
-        rgba(167,139,250,0.13),
-        transparent
-    );
-
-    filter: blur(18px);
-
-    animation: waterfallShimmer 3s ease-in-out infinite alternate;
-}
-
-@keyframes waterfallShimmer {
-    from {
-        opacity: 0.35;
-        transform: translateX(-12px);
-    }
-
-    to {
-        opacity: 0.9;
-        transform: translateX(12px);
-    }
-}
-
-/* FLOWING WATER OVERLAY */
-
-.waterfall-stream {
-    position: absolute;
-    top: 0;
-
-    height: 78%;
-    width: 5%;
-
-    opacity: 0.35;
-
-    background: repeating-linear-gradient(
-        180deg,
-        transparent 0px,
-        rgba(255,255,255,0.55) 18px,
-        rgba(0,229,255,0.4) 35px,
-        transparent 65px
-    );
-
-    background-size: 100% 150px;
-
-    filter: blur(3px);
-
-    animation: waterfallFlow 1.4s linear infinite;
-}
-
-.stream-one {
-    left: 43%;
-}
-
-.stream-two {
-    left: 49%;
-    animation-duration: 1.8s;
-}
-
-.stream-three {
-    left: 55%;
-    animation-duration: 1.2s;
-}
-
-.stream-four {
-    left: 61%;
-    animation-duration: 1.6s;
-}
-
-@keyframes waterfallFlow {
-    from {
-        background-position-y: 0;
-    }
-
-    to {
-        background-position-y: 150px;
-    }
-}
-
-/* WATERFALL MIST */
-
-.waterfall-mist {
-    position: absolute;
-
-    left: 30%;
-    bottom: 19%;
-
-    width: 45%;
-    height: 15%;
-
-    background: radial-gradient(
-        ellipse,
-        rgba(0,229,255,0.3),
-        rgba(167,139,250,0.15),
-        transparent 70%
-    );
-
-    filter: blur(25px);
-
-    animation: mistMove 5s ease-in-out infinite alternate;
-}
-
-@keyframes mistMove {
-    from {
-        transform: translateX(-15px);
-        opacity: 0.4;
-    }
-
-    to {
-        transform: translateX(15px);
-        opacity: 0.9;
-    }
-}
-
-/* WATER POOL — FULL WIDTH */
-
-.water-pool {
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-    height: 23%;
-
-    overflow: hidden;
-
-    background: transparent;
-}
-
-/* RIPPLE EFFECTS */
-
-.water-ripple {
-    position: absolute;
-
-    left: 53%;
-    top: 10%;
-
-    width: 100px;
-    height: 25px;
-
-    border: 2px solid rgba(0,229,255,0.65);
-    border-radius: 50%;
-
-    animation: rippleExpand 3.5s ease-out infinite;
-}
-
-.ripple-two {
-    animation-delay: 1.1s;
-}
-
-.ripple-three {
-    animation-delay: 2.2s;
-}
-
-@keyframes rippleExpand {
-    0% {
-        transform: translate(-50%, 0) scale(0.5);
-        opacity: 0.8;
-    }
-
-    100% {
-        transform: translate(-50%, 0) scale(3.5);
-        opacity: 0;
-    }
-}
-
-/* MOVING WATER REFLECTIONS */
-
-.water-reflection {
-    position: absolute;
-    inset: 0;
-
-    background: repeating-linear-gradient(
-        105deg,
-        transparent 0%,
-        rgba(0,229,255,0.17) 3%,
-        transparent 7%,
-        rgba(240,0,232,0.15) 11%,
-        transparent 16%
-    );
-
-    background-size: 200% 100%;
-
-    animation: reflectionMove 7s linear infinite;
-}
-
-@keyframes reflectionMove {
-    from {
-        background-position: 0% 0;
-    }
-
-    to {
-        background-position: 200% 0;
-    }
-}
-
-/* WATER PARTICLES */
-
-.water-particles {
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        radial-gradient(2px 2px at 20% 30%, white, transparent),
-        radial-gradient(3px 3px at 60% 50%, #00E5FF, transparent),
-        radial-gradient(2px 2px at 80% 20%, white, transparent),
-        radial-gradient(2px 2px at 40% 70%, #A78BFA, transparent);
-
-    background-size: 180px 180px;
-
-    animation: particlesFloat 9s linear infinite;
-}
-
-@keyframes particlesFloat {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-180px);
-    }
-}
-/* ==========================================
-   LOCALLOOP — WATERFALL TEXT SIZE OVERRIDE
-========================================== */
-
-.waterfall-info .eyebrow {
-    font-size: 30px !important;
-}
-
-.waterfall-info h2 {
-    font-size: clamp(70px, 8vw, 80px) !important;
-}
-
-.waterfall-intro {
-    font-size: 20px !important;
-}
-
-.profession-item > span:first-child {
-    font-size: 35px !important;
-}
-
-.profession-item h3 {
-    font-size: 35px !important;
-}
-
-.profession-arrow {
-    font-size: 35px !important;
-}
-/* FIX WATERFALL HEADING LAYOUT */
-
-.waterfall-info {
-    width: 75% !important;
-}
-
-/* HEADING — EXACTLY TWO LINES */
-
-.waterfall-info {
-    width: 85% !important;
-}
-
-.waterfall-info h2 {
-    font-size: clamp(55px, 6vw, 75px) !important;
-    line-height: 1.08 !important;
-    white-space: nowrap !important;
-}
-
-.waterfall-info h2 span {
+.hero .city-container {
     display: block !important;
-    white-space: nowrap !important;
-}
-/* ==========================================
-   LOCALLOOP — CINEMATIC FINAL SCENE
-========================================== */
-
-.final-scene {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 750px;
-    overflow: hidden;
-    background: #080624;
-}
-
-.final-city {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    background-image:
-        linear-gradient(
-            180deg,
-            rgba(8, 6, 36, 0.05),
-            rgba(8, 6, 36, 0.25)
-        ),
-        url("./images/localloop-ending.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    transform: scale(1);
-    will-change: transform;
-}
-
-.final-overlay {
-    position: absolute;
-    inset: 0;
-
-    background: linear-gradient(
-        90deg,
-        rgba(8, 6, 36, 0.25),
-        transparent 50%,
-        rgba(8, 6, 36, 0.15)
-    );
-}
-
-.final-brand {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    text-align: center;
-    z-index: 5;
-    width: 90%;
-}
-
-.final-brand h2 {
-    font-size: clamp(65px, 9vw, 120px);
-    font-weight: 800;
-    letter-spacing: 8px;
-    color: #FFFFFF;
-    margin-bottom: 15px;
-
-    text-shadow:
-        0 0 20px rgba(0, 229, 255, 0.5),
-        0 0 50px rgba(240, 0, 232, 0.4);
-}
-
-.final-brand h2 span {
-    background: linear-gradient(
-        90deg,
-        #00E5FF,
-        #A78BFA,
-        #F000E8
-    );
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.final-brand p {
-    font-size: 18px;
-    color: #FFFFFF;
-    letter-spacing: 5px;
-    font-weight: 500;
-}
-
-.brand-line {
-    width: 100px;
-    height: 3px;
-
-    margin: 30px auto;
-
-    background: linear-gradient(
-        90deg,
-        #00E5FF,
-        #F000E8
-    );
-
-    box-shadow: 0 0 15px #00E5FF;
-}
-
-.final-scroll {
-    position: absolute;
-    bottom: 35px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    color: white;
-    font-size: 10px;
-    letter-spacing: 4px;
-    opacity: 0.8;
-    z-index: 5;
-}
-
-/* FINAL SCENE RESPONSIVE */
-
-@media (max-width: 768px) {
-
-    .final-brand h2 {
-        font-size: 48px;
-        letter-spacing: 4px;
-    }
-
-    .final-brand p {
-        font-size: 13px;
-        letter-spacing: 3px;
-    }
-
-}
-/* QUICK FIX — HOW IT WORKS CARDS */
-.how-it-works .step {
-    opacity: 1 !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
     visibility: visible !important;
-    transform: none !important;
-}
-/* HOW IT WORKS — FONT SIZE INCREASE */
-
-.how-it-works .section-heading .eyebrow {
-    font-size: 30px !important;
 }
 
-.how-it-works .section-heading h2 {
-    font-size: 76px !important;
-}
-
-.how-it-works .section-heading p {
-    font-size: 24px !important;
-}
-
-.how-it-works .step > span {
-    font-size: 50px !important;
-}
-
-.how-it-works .step-icon {
-    font-size: 45px !important;
-}
-
-.how-it-works .step h3 {
-    font-size: 40px !important;
-}
-
-.how-it-works .step p {
-    font-size: 30px !important;
-}
-/* =================================
-   HOW IT WORKS — MOVING WATER
-================================= */
-
-.how-it-works {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    background-image:
-        linear-gradient(rgba(8, 7, 35, 0.35), rgba(8, 7, 35, 0.55)),
-        url("./images/how-it-works-water.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* Animated water shimmer */
-.how-it-works::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-
-    background:
-        repeating-linear-gradient(
-            175deg,
-            transparent 0px,
-            rgba(0, 220, 255, 0.12) 3px,
-            transparent 7px,
-            rgba(180, 100, 255, 0.10) 12px
-        );
-
-    background-size: 100% 180px;
-    animation: waterFlow 7s linear infinite;
-}
-
-/* Moving light reflections */
-.how-it-works::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse at 30% 75%,
-            rgba(0, 220, 255, 0.18),
-            transparent 35%
-        ),
-        radial-gradient(
-            ellipse at 75% 85%,
-            rgba(170, 80, 255, 0.18),
-            transparent 35%
-        );
-
-    animation: waterGlow 5s ease-in-out infinite alternate;
-}
-
-/* Water movement */
-@keyframes waterFlow {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 0 180px;
-    }
-}
-
-/* Reflections */
-@keyframes waterGlow {
-    from {
-        opacity: 0.35;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0.9;
-        transform: translateY(-15px);
-    }
-}
-
-/* Keep existing content above effects */
-.how-it-works .section-heading,
-.how-it-works .steps {
-    position: relative;
-    z-index: 1;
-}
-/* =====================================
-   HOW IT WORKS — WATER DESIGN
-===================================== */
-
-.how-it-works {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(8, 7, 35, 0.65),
-            rgba(10, 8, 38, 0.94) 55%,
-            rgba(5, 12, 42, 0.70)
-        ),
-        url("./images/how-it-works-water.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* MOVING WATER LIGHT */
-
-.how-it-works::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse at 25% 85%,
-            rgba(0, 220, 255, 0.18),
-            transparent 35%
-        ),
-        radial-gradient(
-            ellipse at 75% 90%,
-            rgba(170, 80, 255, 0.16),
-            transparent 35%
-        );
-
-    background-size: 150% 150%;
-    animation: waterFlow 10s ease-in-out infinite alternate;
-}
-
-/* MOVING REFLECTION */
-
-.how-it-works::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    background: linear-gradient(
-        110deg,
-        transparent 35%,
-        rgba(0, 220, 255, 0.12) 48%,
-        rgba(180, 100, 255, 0.10) 52%,
-        transparent 65%
-    );
-
-    background-size: 200% 100%;
-    animation: waterShimmer 12s linear infinite;
-}
-
-/* ANIMATIONS */
-
-@keyframes waterFlow {
-    from {
-        background-position: 0% 50%;
-    }
-
-    to {
-        background-position: 100% 70%;
-    }
-}
-
-@keyframes waterShimmer {
-    from {
-        background-position: 100% 0;
-    }
-
-    to {
-        background-position: -100% 0;
-    }
-}
-
-/* HEADING */
-
-.how-it-works .section-heading {
-    position: relative;
-    z-index: 2;
-}
-
-.how-it-works .section-heading h2,
-.how-it-works .section-heading p {
-    text-shadow: 0 3px 18px #080624;
-}
-
-/* CARDS */
-
-.how-it-works .step {
-    position: relative;
-    z-index: 2;
-
-    background: rgba(12, 9, 43, 0.92) !important;
-    backdrop-filter: blur(14px);
-
-    border: 1px solid rgba(110, 160, 255, 0.4);
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.35),
-        inset 0 0 25px rgba(120, 90, 255, 0.08);
-}
-
-.how-it-works .step h3 {
-    color: #FFFFFF !important;
-}
-
-.how-it-works .step p {
-    color: #E0DDF5 !important;
+.hero .city-image {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
