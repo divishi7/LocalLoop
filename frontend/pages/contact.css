@@ -1,22 +1,653 @@
-/* SMALL TEXT SIZE AND COLOUR UPDATE */
+/* ==============================
+   GLOBAL STYLES
+============================== */
 
-.hero-content p,
-.main-visual p,
-.intro-content p,
-.center-heading > p,
-.feature-card p,
-.step-card p,
-.mission-card p,
-.vision-card p,
-.cta-section p,
-.footer-brand p {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F5F0E8;
+    color: #302820;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+:root {
+    --bg: #F5F0E8;
+    --cream: #EAE1D5;
+    --card: #FFFCF7;
+    --brown: #A67C52;
+    --dark-brown: #75563B;
+    --text: #302820;
+    --muted: #817568;
+    --border: #DED3C4;
+}
+
+
+/* ==============================
+   NAVBAR
+============================== */
+
+.navbar {
+    height: 90px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFCF7;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.logo span {
+    color: var(--brown);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--brown);
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.login-btn {
+    color: var(--dark-brown);
+}
+
+.signup-btn {
+    background: var(--dark-brown);
+    color: white;
+    padding: 13px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.signup-btn:hover {
+    background: var(--brown);
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   HERO
+============================== */
+
+.hero {
+    min-height: 420px;
+    background: var(--cream);
+    padding: 90px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 750px;
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    color: var(--brown);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 5vw, 65px);
+    line-height: 1.2;
+    margin: 22px 0;
+    font-weight: 800;
+}
+
+.hero h1 span,
+.section-heading h2 span,
+.cta-content h2 span {
+    color: var(--brown);
+}
+
+.hero-content p {
+    max-width: 680px;
     font-size: 25px;
-    color: #75563B;
+    line-height: 1.7;
+    color: var(--dark-brown);
+}
+
+.hero-decoration {
+    width: 300px;
+    height: 250px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(166, 124, 82, 0.3);
+}
+
+.circle-one {
+    width: 250px;
+    height: 250px;
+}
+
+.circle-two {
+    width: 190px;
+    height: 190px;
+}
+
+.circle-three {
+    width: 125px;
+    height: 125px;
+    background: rgba(166, 124, 82, 0.12);
+}
+
+.hero-symbol {
+    font-size: 75px;
+    color: var(--brown);
+    z-index: 1;
+}
+
+
+/* ==============================
+   SECTION HEADINGS
+============================== */
+
+.section-heading {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 65px;
+}
+
+.section-heading h2 {
+    font-size: 42px;
+    margin: 18px 0;
+    font-weight: 800;
+}
+
+.section-heading > p {
+    font-size: 25px;
+    line-height: 1.7;
+    color: var(--dark-brown);
+}
+
+
+/* ==============================
+   CONTACT SECTION
+============================== */
+
+.contact-section {
+    padding: 100px 9%;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 50px;
+    align-items: start;
+}
+
+
+/* LEFT SIDE */
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.info-card {
+    display: flex;
+    gap: 22px;
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(117, 86, 59, 0.08);
+}
+
+.info-icon {
+    min-width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--cream);
+    border-radius: 12px;
+    font-size: 25px;
+}
+
+.info-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.info-card p,
+.info-card span,
+.info-card a {
+    display: block;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--dark-brown);
+}
+
+.info-card a {
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.info-card a:hover {
+    color: var(--brown);
+}
+
+
+/* HELP BOX */
+
+.help-box {
+    background: var(--dark-brown);
+    color: white;
+    padding: 35px;
+    border-radius: 16px;
+}
+
+.help-box h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.help-box p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #F1E6D9;
+    margin-bottom: 22px;
+}
+
+.help-box a {
+    display: inline-block;
+    font-weight: 700;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+}
+
+
+/* ==============================
+   CONTACT FORM
+============================== */
+
+.contact-form-container {
+    background: var(--card);
+    padding: 45px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(117, 86, 59, 0.05);
+}
+
+.form-heading {
+    margin-bottom: 35px;
+}
+
+.form-heading h2 {
+    font-size: 35px;
+    margin: 15px 0;
+}
+
+.form-heading p {
+    font-size: 17px;
+    color: var(--dark-brown);
     line-height: 1.7;
 }
 
-/* Keep footer readable */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+    background: #FFFEFC;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--brown);
+    box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    background: var(--dark-brown);
+    color: white;
+    padding: 17px;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn span {
+    margin-left: 8px;
+}
+
+.submit-btn:hover {
+    background: var(--brown);
+    transform: translateY(-3px);
+}
+
+.form-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 18px;
+}
+
+
+/* ==============================
+   FAQ SECTION
+============================== */
+
+.faq-section {
+    padding: 100px 12%;
+    background: var(--cream);
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.faq-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px 30px;
+    margin-bottom: 18px;
+    transition: 0.3s;
+}
+
+.faq-item:hover {
+    border-color: var(--brown);
+}
+
+.faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    font-size: 19px;
+    font-weight: 700;
+    position: relative;
+    padding-right: 30px;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    font-size: 25px;
+    color: var(--brown);
+    top: -5px;
+}
+
+.faq-item[open] summary::after {
+    content: "−";
+}
+
+.faq-item p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--dark-brown);
+    margin-top: 18px;
+}
+
+
+/* ==============================
+   CTA SECTION
+============================== */
+
+.cta-section {
+    padding: 100px 10%;
+    text-align: center;
+    background: var(--card);
+}
+
+.cta-content h2 {
+    font-size: 45px;
+    margin: 20px 0;
+}
+
+.cta-content p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--dark-brown);
+}
+
+.cta-btn {
+    display: inline-block;
+    background: var(--dark-brown);
+    color: white;
+    padding: 16px 30px;
+    border-radius: 9px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: var(--brown);
+    transform: translateY(-3px);
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer {
+    background: #302820;
+    color: #FFFCF7;
+    padding: 70px 9% 25px;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 55px;
+}
+
+.footer .logo {
+    color: white;
+}
+
+.footer-brand p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #D8C7B4;
+    max-width: 350px;
+    margin-top: 20px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.footer-links h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
 .footer-links a,
+.footer-links span {
+    font-size: 14px;
+    color: #D8C7B4;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
 .footer-bottom {
-    color: #75563B;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #D8C7B4;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding: 20px 5%;
+        height: auto;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-decoration {
+        display: none;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 70px 7%;
+    }
+
+    .hero-content p,
+    .section-heading > p {
+        font-size: 18px;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+    .contact-section,
+    .faq-section {
+        padding: 65px 6%;
+    }
+
+    .contact-form-container {
+        padding: 25px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .cta-content h2 {
+        font-size: 32px;
+    }
+
 }

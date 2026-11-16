@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | LocalLoop</title>
+
+    <link rel="stylesheet" href="contact.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <a href="../index.html" class="logo">
+            Local<span>Loop.</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="../index.html#how-it-works">How It Works</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+
+        <div class="nav-buttons">
+            <a href="login.html" class="login-btn">Log In</a>
+            <a href="signup.html" class="signup-btn">Join LocalLoop ↗</a>
+        </div>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">WE'RE HERE FOR YOU</span>
+
+            <h1>
+                Let's Start a <span>Conversation.</span>
+            </h1>
+
+            <p>
+                Have a question, suggestion, or need a little help?
+                We'd love to hear from you. Reach out to us and
+                let's make your LocalLoop experience better.
+            </p>
+
+        </div>
+
+        <div class="hero-decoration">
+            <div class="circle circle-one"></div>
+            <div class="circle circle-two"></div>
+            <div class="circle circle-three"></div>
+            <span class="hero-symbol">✉</span>
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT INFORMATION -->
+    <section class="contact-section">
+
+        <div class="section-heading">
+            <span class="eyebrow">GET IN TOUCH</span>
+            <h2>We'd Love to <span>Hear From You.</span></h2>
+
+            <p>
+                Whether you're a customer looking for help or a service
+                provider interested in joining us, we're just a message away.
+            </p>
+        </div>
+
+
+        <div class="contact-layout">
+
+            <!-- LEFT SIDE -->
+            <div class="contact-info">
+
+                <div class="info-card">
+                    <div class="info-icon">✉</div>
+
+                    <div>
+                        <h3>Email Us</h3>
+                        <p>Have a query? Drop us an email.</p>
+                        <a href="mailto:localloop.help@gmail.com">
+                            localloop.help@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>We're currently building our local network.</p>
+                        <span>Delhi, India</span>
+                    </div>
+                </div>
+
+
+                <div class="info-card">
+                    <div class="info-icon">🤝</div>
+
+                    <div>
+                        <h3>Partnerships</h3>
+                        <p>Interested in collaborating with LocalLoop?</p>
+                        <span>Let's grow together!</span>
+                    </div>
+                </div>
+
+
+                <div class="help-box">
+                    <h3>Need quick help?</h3>
+
+                    <p>
+                        Check out our frequently asked questions
+                        to find answers to common queries.
+                    </p>
+
+                    <a href="#faq">Explore FAQs ↓</a>
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE: CONTACT FORM -->
+            <div class="contact-form-container">
+
+                <div class="form-heading">
+                    <span class="eyebrow">SEND US A MESSAGE</span>
+                    <h2>Get in Touch</h2>
+
+                    <p>
+                        Fill in the details below and we'll be happy
+                        to assist you.
+                    </p>
+                </div>
+
+
+                <form id="contactForm">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+
+                            <input type="text" id="name" name="name"
+                                placeholder="Enter your name" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+
+                            <input type="email" id="email" name="email"
+                                placeholder="Enter your email" required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+
+                        <input type="text" id="subject" name="subject"
+                            placeholder="What is this regarding?" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+
+                        <textarea id="message" name="message" rows="6"
+                            placeholder="Tell us how we can help you..."
+                            required></textarea>
+                    </div>
+
+
+                    <button type="submit" class="submit-btn">
+                        Send Message <span>↗</span>
+                    </button>
+
+                    <p class="form-note">
+                        We appreciate you taking the time to contact us!
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+
+        <div class="section-heading">
+            <span class="eyebrow">GOT QUESTIONS?</span>
+
+            <h2>Frequently Asked <span>Questions.</span></h2>
+
+            <p>
+                Here are some answers to questions you might have
+                about LocalLoop.
+            </p>
+        </div>
+
+
+        <div class="faq-container">
+
+            <details class="faq-item">
+                <summary>What is LocalLoop?</summary>
+
+                <p>
+                    LocalLoop is a local services discovery platform
+                    that helps users discover and connect with service
+                    providers in their nearby areas.
+                </p>
+            </details>
+
+
+            <details class="faq-item">
+                <summary>How can I find a service provider?</summary>
+
+                <p>
+                    Visit our Explore page, browse different service
+                    categories, and use the search and filters to find
+                    services that match your requirements.
+                </p>
+            </details>
+
+
+            <details class="faq-item">
+                <summary>How can I register as a service provider?</summary>
+
+                <p>
+                    You can create an account through our Sign Up page
+                    and select the service provider role.
+                </p>
+            </details>
+
+
+            <details class="faq-item">
+                <summary>Is LocalLoop free to use?</summary>
+
+                <p>
+                    You can explore the platform and browse listed
+                    services. Any applicable service charges will be
+                    communicated by the respective provider.
+                </p>
+            </details>
+
+
+            <details class="faq-item">
+                <summary>How can I contact the LocalLoop team?</summary>
+
+                <p>
+                    You can use the contact form on this page or
+                    reach out through the email address listed above.
+                </p>
+            </details>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+
+        <div class="cta-content">
+
+            <span class="eyebrow">YOUR NEIGHBOURHOOD, CONNECTED</span>
+
+            <h2>
+                Discover. Compare. <span>Connect.</span>
+            </h2>
+
+            <p>
+                Your next trusted local service is just around the corner.
+                Start exploring with LocalLoop today.
+            </p>
+
+            <a href="explore.html" class="cta-btn">
+                Explore Services ↗
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    Local<span>Loop.</span>
+                </a>
+
+                <p>
+                    Discover trusted local services.
+                    Compare your options and connect
+                    with the people who make life easier.
+                </p>
+            </div>
+
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <a href="explore.html">Find Services</a>
+                <a href="signup.html">Become a Provider</a>
+                <a href="../index.html#how-it-works">How It Works</a>
+            </div>
+
+
+            <div class="footer-links">
+                <h3>Company</h3>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="login.html">Login</a>
+            </div>
+
+
+            <div class="footer-links">
+                <h3>Get in Touch</h3>
+                <a href="mailto:localloop.help@gmail.com">
+                    Email Us
+                </a>
+                <span>Delhi, India</span>
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>© 2026 LocalLoop. All rights reserved.</p>
+            <p>Made with care for local communities ♡</p>
+        </div>
+
+    </footer>
+
+
+    <!-- DEMO FORM SCRIPT -->
+    <script>
+
+        const contactForm = document.getElementById("contactForm");
+
+        contactForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+
+            alert("Thank you, " + name + "! Your message has been received in this demo.");
+
+            contactForm.reset();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
