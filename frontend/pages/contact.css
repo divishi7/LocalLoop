@@ -1,0 +1,22 @@
+/* SMALL TEXT SIZE AND COLOUR UPDATE */
+
+.hero-content p,
+.main-visual p,
+.intro-content p,
+.center-heading > p,
+.feature-card p,
+.step-card p,
+.mission-card p,
+.vision-card p,
+.cta-section p,
+.footer-brand p {
+    font-size: 25px;
+    color: #75563B;
+    line-height: 1.7;
+}
+
+/* Keep footer readable */
+.footer-links a,
+.footer-bottom {
+    color: #75563B;
+}

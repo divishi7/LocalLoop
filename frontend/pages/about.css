@@ -1,0 +1,905 @@
+/* ==============================
+   GLOBAL STYLES
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F5F0E8;
+    color: #302820;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+:root {
+    --bg: #F5F0E8;
+    --cream: #EAE1D5;
+    --card: #FFFCF7;
+    --brown: #A67C52;
+    --dark-brown: #75563B;
+    --text: #302820;
+    --muted: #817568;
+    --border: #DED3C4;
+}
+
+
+/* ==============================
+   NAVBAR
+================================ */
+
+.navbar {
+    width: 100%;
+    min-height: 85px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFCF7;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
+
+.logo span {
+    color: var(--brown);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--dark-brown);
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.login-btn {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.signup-btn {
+    background: var(--dark-brown);
+    color: white;
+    padding: 13px 21px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.signup-btn:hover {
+    background: var(--brown);
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   COMMON SECTION STYLES
+================================ */
+
+.eyebrow {
+    display: inline-block;
+    color: var(--brown);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    line-height: 1.3;
+    letter-spacing: -1.5px;
+}
+
+.section-heading h2 span {
+    color: var(--brown);
+}
+
+.center-heading {
+    text-align: center;
+}
+
+.center-heading > p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 15px auto 0;
+}
+
+
+/* ==============================
+   HERO SECTION
+================================ */
+
+.hero {
+    min-height: 570px;
+    padding: 100px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.hero-content {
+    max-width: 570px;
+}
+
+.hero-content h1 {
+    font-size: 57px;
+    line-height: 1.15;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+.hero-content h1 span {
+    color: var(--brown);
+}
+
+.hero-content p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+    max-width: 510px;
+    margin-bottom: 32px;
+}
+
+.primary-btn {
+    display: inline-block;
+    background: var(--dark-brown);
+    color: white;
+    padding: 16px 27px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: var(--brown);
+    transform: translateY(-3px);
+}
+
+
+/* Hero Visual */
+
+.hero-visual {
+    width: 440px;
+    height: 350px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-visual {
+    width: 340px;
+    height: 280px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 50px rgba(117, 86, 59, 0.08);
+}
+
+.visual-icon {
+    font-size: 65px;
+    margin-bottom: 20px;
+}
+
+.main-visual h3 {
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.main-visual p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.floating-card {
+    position: absolute;
+    background: var(--card);
+    padding: 16px 19px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(48, 40, 32, 0.08);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.floating-card span {
+    margin-right: 8px;
+    color: var(--brown);
+    font-size: 17px;
+}
+
+.floating-one {
+    top: 15px;
+    right: -20px;
+}
+
+.floating-two {
+    bottom: 15px;
+    left: -20px;
+}
+
+
+/* ==============================
+   INTRODUCTION
+================================ */
+
+.intro-section {
+    background: var(--card);
+    padding: 100px 12%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 90px;
+}
+
+.intro-content p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 18px;
+}
+
+.intro-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==============================
+   FEATURES
+================================ */
+
+.features-section {
+    padding: 100px 10%;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 55px;
+}
+
+.feature-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 35px 30px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(117, 86, 59, 0.09);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--cream);
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+
+/* ==============================
+   HOW IT WORKS
+================================ */
+
+.how-section {
+    background: var(--cream);
+    padding: 100px 10%;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 55px;
+}
+
+.step-card {
+    position: relative;
+    background: var(--card);
+    padding: 35px;
+    border-radius: 22px;
+    border: 1px solid var(--border);
+}
+
+.step-number {
+    position: absolute;
+    top: 25px;
+    right: 28px;
+    font-size: 30px;
+    font-weight: 800;
+    color: #E6D9C8;
+}
+
+.step-icon {
+    font-size: 35px;
+    margin-bottom: 25px;
+}
+
+.step-card h3 {
+    font-size: 21px;
+    margin-bottom: 13px;
+}
+
+.step-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+
+/* ==============================
+   MISSION AND VISION
+================================ */
+
+.mission-section {
+    padding: 100px 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.mission-card,
+.vision-card {
+    padding: 45px;
+    border-radius: 25px;
+    border: 1px solid var(--border);
+}
+
+.mission-card {
+    background: var(--card);
+}
+
+.vision-card {
+    background: var(--cream);
+}
+
+.mission-icon {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.mission-card .eyebrow,
+.vision-card .eyebrow {
+    margin-bottom: 15px;
+}
+
+.mission-card h2,
+.vision-card h2 {
+    font-size: 27px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.mission-card p,
+.vision-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 2;
+}
+
+
+/* ==============================
+   FINAL CTA
+================================ */
+
+.cta-section {
+    background: var(--dark-brown);
+    color: white;
+    text-align: center;
+    padding: 90px 20px;
+}
+
+.cta-section .eyebrow {
+    color: #E5C7A5;
+}
+
+.cta-section h2 {
+    font-size: 42px;
+    line-height: 1.4;
+    letter-spacing: -1px;
+    margin-bottom: 18px;
+}
+
+.cta-section h2 span {
+    color: #E5C7A5;
+}
+
+.cta-section p {
+    color: #E7DDD2;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    display: inline-block;
+    background: var(--card);
+    color: var(--dark-brown);
+    padding: 16px 28px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 800;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: var(--cream);
+    transform: translateY(-3px);
+}
+
+
+/* ==============================
+   FOOTER
+================================ */
+
+.footer {
+    background: #FFFCF7;
+    padding: 45px 10% 25px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 35px;
+    border-bottom: 1px solid var(--border);
+}
+
+.footer-brand p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links a {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--dark-brown);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        gap: 17px;
+    }
+
+    .hero {
+        padding: 80px 6%;
+    }
+
+    .hero-content h1 {
+        font-size: 46px;
+    }
+
+    .intro-section {
+        padding: 80px 7%;
+        gap: 40px;
+    }
+
+    .features-section,
+    .how-section,
+    .mission-section {
+        padding: 80px 6%;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .navbar {
+        padding: 20px 5%;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-buttons {
+        gap: 12px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 70px 7%;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-visual {
+        width: 100%;
+        max-width: 440px;
+    }
+
+    .intro-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .section-heading h2 {
+        font-size: 31px;
+    }
+
+    .features-grid,
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-section {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .hero-content h1 {
+        font-size: 35px;
+    }
+
+    .hero-visual {
+        transform: scale(0.85);
+        margin: -20px 0;
+    }
+
+    .cta-section h2 {
+        font-size: 32px;
+    }
+
+    .mission-card,
+    .vision-card {
+        padding: 30px;
+    }
+
+}
+/* =================================
+   READABILITY UPGRADE
+================================= */
+
+/* General text */
+body {
+    font-size: 16px;
+}
+
+/* Navbar */
+.logo {
+    font-size: 30px;
+}
+
+.nav-links a,
+.login-btn {
+    font-size: 16px;
+}
+
+.signup-btn {
+    font-size: 15px;
+    padding: 15px 23px;
+}
+
+/* Hero section */
+.eyebrow {
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    line-height: 1.18;
+}
+
+.hero-content p {
+    font-size: 19px;
+    line-height: 1.9;
+    max-width: 570px;
+}
+
+.primary-btn {
+    font-size: 16px;
+    padding: 17px 30px;
+}
+
+/* Hero illustration */
+.main-visual h3 {
+    font-size: 24px;
+}
+
+.main-visual p {
+    font-size: 15px;
+}
+
+.floating-card {
+    font-size: 14px;
+    padding: 18px 21px;
+}
+
+/* Section headings */
+.section-heading h2 {
+    font-size: 44px;
+    line-height: 1.35;
+}
+
+.center-heading > p {
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+/* Introduction */
+.intro-content p {
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 22px;
+}
+
+/* Feature cards */
+.feature-card {
+    padding: 40px 32px;
+}
+
+.feature-icon {
+    width: 68px;
+    height: 68px;
+    font-size: 32px;
+}
+
+.feature-card h3 {
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.feature-card p {
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+/* How it works */
+.step-number {
+    font-size: 34px;
+}
+
+.step-icon {
+    font-size: 40px;
+}
+
+.step-card h3 {
+    font-size: 24px;
+}
+
+.step-card p {
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+/* Mission and vision */
+.mission-card,
+.vision-card {
+    padding: 50px;
+}
+
+.mission-icon {
+    font-size: 45px;
+}
+
+.mission-card h2,
+.vision-card h2 {
+    font-size: 32px;
+    line-height: 1.45;
+}
+
+.mission-card p,
+.vision-card p {
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+/* Final CTA */
+.cta-section .eyebrow {
+    font-size: 14px;
+}
+
+.cta-section h2 {
+    font-size: 48px;
+}
+
+.cta-section p {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.cta-btn {
+    font-size: 16px;
+    padding: 18px 32px;
+}
+
+/* Footer */
+.footer-brand p {
+    font-size: 15px;
+}
+
+.footer-links a {
+    font-size: 15px;
+}
+
+.footer-bottom {
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 750px) {
+
+    .hero-content h1 {
+        font-size: 46px;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+    .intro-content p {
+        font-size: 25px;
+    }
+
+    .mission-card h2,
+    .vision-card h2 {
+        font-size: 27px;
+    }
+
+    .cta-section h2 {
+        font-size: 35px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+}
+/* SMALL TEXT SIZE AND COLOUR UPDATE */
+
+.hero-content p,
+.main-visual p,
+.intro-content p,
+.center-heading > p,
+.feature-card p,
+.step-card p,
+.mission-card p,
+.vision-card p,
+.cta-section p,
+.footer-brand p {
+    font-size: 25px;
+    color: #75563B;
+    line-height: 1.7;
+}
+
+/* Keep footer readable */
+.footer-links a,
+.footer-bottom {
+    color: #75563B;
+}

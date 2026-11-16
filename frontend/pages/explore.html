@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Services | LocalLoop</title>
+    <link rel="stylesheet" href="explore.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <a href="../index.html" class="logo">
+            Local<span>Loop.</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="explore.html" class="active">Explore</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <a href="login.html" class="nav-btn">Login</a>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="explore-hero">
+
+            <span class="eyebrow">YOUR NEIGHBOURHOOD, CONNECTED</span>
+
+            <h1>
+                Find the Right
+                <span>Local Service.</span>
+            </h1>
+
+            <p>
+                Discover talented professionals and trusted services
+                right in your neighbourhood.
+            </p>
+
+        </section>
+
+
+        <!-- SEARCH SECTION -->
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="What service are you looking for?"
+                >
+
+                <button id="searchBtn" class="search-btn">
+                    Search
+                </button>
+
+            </div>
+
+            <div class="filter-options">
+
+                <div class="filter-group">
+
+                    <label for="locationFilter">LOCATION</label>
+
+                    <select id="locationFilter">
+                        <option value="">All Locations</option>
+                        <option value="North Delhi">North Delhi</option>
+                        <option value="South Delhi">South Delhi</option>
+                        <option value="East Delhi">East Delhi</option>
+                        <option value="West Delhi">West Delhi</option>
+                        <option value="Central Delhi">Central Delhi</option>
+                    </select>
+
+                </div>
+
+                <div class="filter-group">
+
+                    <label for="sortFilter">SORT BY</label>
+
+                    <select id="sortFilter">
+                        <option value="default">Recommended</option>
+                        <option value="low">Price: Low to High</option>
+                        <option value="high">Price: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+
+                </div>
+
+                <button id="clearFilters" class="clear-btn">
+                    Clear Filters ↺
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORY FILTERS -->
+        <section class="category-section">
+
+            <div class="section-label">
+                <div>
+                    <span class="eyebrow">BROWSE BY CATEGORY</span>
+                    <h2>What do you need help with?</h2>
+                </div>
+            </div>
+
+            <div class="category-list" id="categoryList">
+
+                <button class="category-btn active" data-category="all">
+                    <span>✦</span> All Services
+                </button>
+
+                <button class="category-btn" data-category="Home Services">
+                    🏠 Home Services
+                </button>
+
+                <button class="category-btn" data-category="Education">
+                    📚 Education
+                </button>
+
+                <button class="category-btn" data-category="Beauty">
+                    ✨ Beauty
+                </button>
+
+                <button class="category-btn" data-category="Photography">
+                    📸 Photography
+                </button>
+
+                <button class="category-btn" data-category="Repairs">
+                    🔧 Repairs
+                </button>
+
+                <button class="category-btn" data-category="Cleaning">
+                    🧹 Cleaning
+                </button>
+
+                <button class="category-btn" data-category="Plumbing">
+                    🚿 Plumbing
+                </button>
+
+                <button class="category-btn" data-category="Crafts & Handyman">
+                    🛠 Craftsman
+                </button>
+
+                <button class="category-btn" data-category="Healthcare">
+                    🩺 Healthcare
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROVIDER LISTINGS -->
+        <section class="listing-section">
+
+            <div class="listing-heading">
+
+                <div>
+                    <span class="eyebrow">LOCAL PROFESSIONALS</span>
+                    <h2>Available Services</h2>
+                </div>
+
+                <p id="resultCount">Loading services...</p>
+
+            </div>
+
+
+            <!-- CARDS ARE GENERATED BY JAVASCRIPT -->
+            <div class="provider-grid" id="serviceGrid">
+
+            </div>
+
+
+            <!-- NO RESULTS -->
+            <div class="no-results" id="noResults">
+
+                <div class="empty-icon">🔎</div>
+
+                <h3>No services found</h3>
+
+                <p>
+                    We couldn't find any matching professionals.
+                    Try another category or location.
+                </p>
+
+                <button class="search-btn" onclick="resetFilters()">
+                    Show All Services
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h2>Local<span>Loop.</span></h2>
+                <p>Discover Local Services. Compare. Connect.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 LocalLoop. All rights reserved.
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // ===================================
+        // SAMPLE SERVICE PROVIDERS
+        // ===================================
+
+        const providers = [
+
+            {
+                id: 1,
+                name: "Home Cleaning Expert",
+                person: "Rahul Sharma",
+                category: "Home Services",
+                location: "North Delhi",
+                price: 800,
+                icon: "🏠",
+                description: "Professional home cleaning and housekeeping services."
+            },
+
+            {
+                id: 2,
+                name: "Mathematics Tutor",
+                person: "Priya Verma",
+                category: "Education",
+                location: "Central Delhi",
+                price: 500,
+                icon: "📚",
+                description: "Personalised mathematics lessons for school students."
+            },
+
+            {
+                id: 3,
+                name: "Professional Makeup Artist",
+                person: "Ananya Singh",
+                category: "Beauty",
+                location: "South Delhi",
+                price: 1200,
+                icon: "💄",
+                description: "Makeup services for parties, events and special occasions."
+            },
+
+            {
+                id: 4,
+                name: "Wedding Photographer",
+                person: "Arjun Mehta",
+                category: "Photography",
+                location: "South Delhi",
+                price: 3500,
+                icon: "📸",
+                description: "Wedding, portrait and event photography."
+            },
+
+            {
+                id: 5,
+                name: "Electrical Repair Expert",
+                person: "Mohit Kumar",
+                category: "Repairs",
+                location: "West Delhi",
+                price: 600,
+                icon: "🔧",
+                description: "Electrical installation, maintenance and repairs."
+            },
+
+            {
+                id: 6,
+                name: "Deep Cleaning Services",
+                person: "Neha Gupta",
+                category: "Cleaning",
+                location: "North Delhi",
+                price: 1000,
+                icon: "🧹",
+                description: "Detailed home and office cleaning services."
+            },
+
+            {
+                id: 7,
+                name: "Interior Designer",
+                person: "Riya Malhotra",
+                category: "Home Services",
+                location: "South Delhi",
+                price: 2500,
+                icon: "🛋️",
+                description: "Creative interior design and home decoration."
+            },
+
+            {
+                id: 8,
+                name: "English Language Tutor",
+                person: "Simran Kaur",
+                category: "Education",
+                location: "North Delhi",
+                price: 700,
+                icon: "🎓",
+                description: "English speaking and communication classes."
+            },
+
+            {
+                id: 9,
+                name: "Hair Styling Expert",
+                person: "Mehak Arora",
+                category: "Beauty",
+                location: "West Delhi",
+                price: 900,
+                icon: "💇",
+                description: "Professional hair styling and beauty treatments."
+            },
+
+            {
+                id: 10,
+                name: "Plumbing Expert",
+                person: "Aman Yadav",
+                category: "Plumbing",
+                location: "North Delhi",
+                price: 750,
+                icon: "🚿",
+                description: "Pipe fitting, leakage and plumbing repairs."
+            },
+
+            {
+                id: 11,
+                name: "Furniture Craftsman",
+                person: "Vikram Singh",
+                category: "Crafts & Handyman",
+                location: "East Delhi",
+                price: 1500,
+                icon: "🪚",
+                description: "Custom furniture, woodwork and furniture repairs."
+            },
+
+            {
+                id: 12,
+                name: "General Physician",
+                person: "Dr. Sample Provider",
+                category: "Healthcare",
+                location: "Central Delhi",
+                price: 500,
+                icon: "🩺",
+                description: "Sample healthcare listing. Verify credentials before choosing a provider."
+            },
+
+            {
+                id: 13,
+                name: "AC Repair Specialist",
+                person: "Karan Verma",
+                category: "Repairs",
+                location: "East Delhi",
+                price: 900,
+                icon: "❄️",
+                description: "Air conditioner servicing and repair."
+            },
+
+            {
+                id: 14,
+                name: "Office Cleaning Professional",
+                person: "Pooja Sharma",
+                category: "Cleaning",
+                location: "West Delhi",
+                price: 1500,
+                icon: "🧽",
+                description: "Professional office and workspace cleaning."
+            },
+
+            {
+                id: 15,
+                name: "Personal Fitness Trainer",
+                person: "Aarav Kapoor",
+                category: "Healthcare",
+                location: "South Delhi",
+                price: 1000,
+                icon: "🏃",
+                description: "Personal fitness and wellness training."
+            }
+
+        ];
+
+
+        // ===================================
+        // FILTER VARIABLES
+        // ===================================
+
+        let selectedCategory = "all";
+
+        const serviceGrid = document.getElementById("serviceGrid");
+        const searchInput = document.getElementById("searchInput");
+        const locationFilter = document.getElementById("locationFilter");
+        const sortFilter = document.getElementById("sortFilter");
+        const resultCount = document.getElementById("resultCount");
+        const noResults = document.getElementById("noResults");
+
+
+        // ===================================
+        // DISPLAY SERVICE CARDS
+        // ===================================
+
+        function displayProviders(list) {
+
+            serviceGrid.innerHTML = "";
+
+            list.forEach(provider => {
+
+                const card = document.createElement("article");
+
+                card.className = "provider-card";
+
+                card.innerHTML = `
+
+                    <div class="provider-image">
+                        <span>${provider.icon}</span>
+                    </div>
+
+                    <div class="provider-content">
+
+                        <span class="provider-category">
+                            ${provider.category}
+                        </span>
+
+                        <h3>${provider.name}</h3>
+
+                        <p class="provider-person">
+                            <span>👤</span> ${provider.person}
+                        </p>
+
+                        <p class="provider-location">
+                            <span>📍</span> ${provider.location}
+                        </p>
+
+                        <p class="provider-description">
+                            ${provider.description}
+                        </p>
+
+                        <div class="provider-bottom">
+
+                            <div class="price">
+                                <strong>₹${provider.price.toLocaleString("en-IN")}</strong>
+                                <small>Starting price</small>
+                            </div>
+
+                            <a
+                                href="provider-details.html?id=${provider.id}"
+                                class="details-btn"
+                            >
+                                View Details →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                serviceGrid.appendChild(card);
+
+            });
+
+            resultCount.textContent =
+                `${list.length} ${list.length === 1 ? "service" : "services"} found`;
+
+            noResults.style.display =
+                list.length === 0 ? "block" : "none";
+
+            serviceGrid.style.display =
+                list.length === 0 ? "none" : "grid";
+
+        }
+
+
+        // ===================================
+        // FILTER SERVICES
+        // ===================================
+
+        function filterServices() {
+
+            const searchTerm = searchInput.value
+                .trim()
+                .toLowerCase();
+
+            const selectedLocation = locationFilter.value;
+
+            let filtered = providers.filter(provider => {
+
+                const searchableText = [
+
+                    provider.name,
+                    provider.person,
+                    provider.category,
+                    provider.location,
+                    provider.description
+
+                ].join(" ").toLowerCase();
+
+
+                const matchesSearch =
+                    searchableText.includes(searchTerm);
+
+
+                const matchesCategory =
+                    selectedCategory === "all" ||
+                    provider.category === selectedCategory;
+
+
+                const matchesLocation =
+                    selectedLocation === "" ||
+                    provider.location === selectedLocation;
+
+
+                return matchesSearch &&
+                       matchesCategory &&
+                       matchesLocation;
+
+            });
+
+
+            // SORTING
+
+            if (sortFilter.value === "low") {
+
+                filtered.sort((a, b) => a.price - b.price);
+
+            }
+
+            else if (sortFilter.value === "high") {
+
+                filtered.sort((a, b) => b.price - a.price);
+
+            }
+
+            else if (sortFilter.value === "name") {
+
+                filtered.sort((a, b) =>
+                    a.name.localeCompare(b.name)
+                );
+
+            }
+
+
+            displayProviders(filtered);
+
+        }
+
+
+        // ===================================
+        // CATEGORY BUTTONS
+        // ===================================
+
+        document.querySelectorAll(".category-btn").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                document.querySelectorAll(".category-btn")
+                    .forEach(btn => btn.classList.remove("active"));
+
+                button.classList.add("active");
+
+                selectedCategory = button.dataset.category;
+
+                filterServices();
+
+            });
+
+        });
+
+
+        // ===================================
+        // SEARCH AND FILTER EVENTS
+        // ===================================
+
+        document.getElementById("searchBtn")
+            .addEventListener("click", filterServices);
+
+        searchInput.addEventListener("input", filterServices);
+
+        locationFilter.addEventListener("change", filterServices);
+
+        sortFilter.addEventListener("change", filterServices);
+
+
+        // SEARCH ON ENTER
+
+        searchInput.addEventListener("keydown", event => {
+
+            if (event.key === "Enter") {
+                filterServices();
+            }
+
+        });
+
+
+        // ===================================
+        // CLEAR FILTERS
+        // ===================================
+
+        function resetFilters() {
+
+            searchInput.value = "";
+
+            locationFilter.value = "";
+
+            sortFilter.value = "default";
+
+            selectedCategory = "all";
+
+            document.querySelectorAll(".category-btn")
+                .forEach(btn => btn.classList.remove("active"));
+
+            document.querySelector('[data-category="all"]')
+                .classList.add("active");
+
+            filterServices();
+
+        }
+
+        document.getElementById("clearFilters")
+            .addEventListener("click", resetFilters);
+
+
+        // ===================================
+        // HOMEPAGE CATEGORY LINKS
+        // ===================================
+
+        const params = new URLSearchParams(window.location.search);
+
+        const requestedCategory = params.get("category");
+
+        if (requestedCategory) {
+
+            const matchingButton = Array.from(
+                document.querySelectorAll(".category-btn")
+            ).find(button =>
+                button.dataset.category.toLowerCase() ===
+                requestedCategory.toLowerCase()
+            );
+
+            if (matchingButton) {
+
+                selectedCategory = matchingButton.dataset.category;
+
+                document.querySelectorAll(".category-btn")
+                    .forEach(btn => btn.classList.remove("active"));
+
+                matchingButton.classList.add("active");
+
+            }
+
+        }
+
+
+        // INITIAL DISPLAY
+
+        filterServices();
+
+    </script>
+
+</body>
+</html>

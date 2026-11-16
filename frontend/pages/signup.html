@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | LocalLoop</title>
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="../index.html" class="logo">Local<span>Loop.</span></a>
+
+    <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <a href="login.html" class="btn btn-outline">Login</a>
+</header>
+
+<main class="container">
+
+    <section class="form-card">
+        <h1>Create Account</h1>
+        <p>Join LocalLoop and connect with trusted local professionals.</p>
+
+        <form id="signupForm">
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Create a password" minlength="6" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="role">I want to join as</label>
+                <select id="role" required>
+                    <option value="">Select your role</option>
+                    <option value="customer">Customer</option>
+                    <option value="provider">Service Provider</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Create Account</button>
+
+        </form>
+
+        <div class="form-bottom">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <h3>LocalLoop.</h3>
+    <p>Discover Local Services. Compare. Connect.</p>
+</footer>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    alert("Signup form is ready! Backend integration will be added next.");
+});
+
+document.getElementById("loginForm")?.addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("Login form is ready! Backend integration will be added next.");
+});
+</script>
+
+</body>
+</html>

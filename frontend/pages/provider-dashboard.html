@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Provider Dashboard | LocalLoop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="provider-dashboard.css">
+</head>
+
+<body>
+
+    <div class="provider-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <a href="../index.html" class="logo">
+                LocalLoop<span>.</span>
+            </a>
+
+            <p class="sidebar-label">WORKSPACE</p>
+
+            <nav class="sidebar-nav">
+
+                <a href="#overview" class="nav-item active">
+                    ⌂ Overview
+                </a>
+
+                <a href="#requests" class="nav-item">
+                    ▣ Booking Requests
+                </a>
+
+                <a href="#services" class="nav-item">
+                    ✦ My Services
+                </a>
+
+                <a href="#profile" class="nav-item">
+                    ♙ My Profile
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="help-card">
+
+                    <div class="help-icon">✦</div>
+
+                    <h3>Need assistance?</h3>
+
+                    <p>
+                        We're here to help you grow your local business.
+                    </p>
+
+                    <a href="contact.html">
+                        Contact Support ↗
+                    </a>
+
+                </div>
+
+                <a href="../index.html" class="nav-item logout">
+                    ↪ Log Out
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" id="overview">
+
+            <!-- HEADER -->
+            <header class="topbar">
+
+                <div>
+
+                    <p class="breadcrumb">
+                        Dashboard / Overview
+                    </p>
+
+                    <h1>
+                        Hello, <span>Rahul!</span> 👋
+                    </h1>
+
+                    <p class="topbar-subtitle">
+                        Here's an overview of your service business.
+                    </p>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <span class="demo-badge">
+                        DEMO PREVIEW
+                    </span>
+
+                    <div class="profile-avatar">
+                        R
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- BUSINESS PROFILE -->
+            <section class="provider-banner">
+
+                <div class="provider-banner-icon">
+                    🏠
+                </div>
+
+                <div class="provider-banner-info">
+
+                    <p class="eyebrow">
+                        YOUR BUSINESS
+                    </p>
+
+                    <h2>
+                        Home Cleaning Services
+                    </h2>
+
+                    <p>
+                        North Delhi · Home Services
+                    </p>
+
+                </div>
+
+                <span class="active-badge">
+                    ● Active
+                </span>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Total Bookings</span>
+                        <div class="stat-icon">▣</div>
+                    </div>
+
+                    <h2 id="totalBookings">5</h2>
+
+                    <p>All customer requests</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Pending Requests</span>
+                        <div class="stat-icon orange">◷</div>
+                    </div>
+
+                    <h2 id="pendingBookings">2</h2>
+
+                    <p>Need your attention</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Accepted</span>
+                        <div class="stat-icon green">✓</div>
+                    </div>
+
+                    <h2 id="acceptedBookings">1</h2>
+
+                    <p>Confirmed bookings</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Completed</span>
+                        <div class="stat-icon purple">✦</div>
+                    </div>
+
+                    <h2 id="completedBookings">2</h2>
+
+                    <p>Successfully delivered</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOOKING REQUESTS -->
+            <section class="requests-section" id="requests">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            MANAGE YOUR WORK
+                        </p>
+
+                        <h2>Booking Requests</h2>
+
+                        <p class="section-subtitle">
+                            Review and manage your customer bookings.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FILTERS -->
+                <div class="booking-filters">
+
+                    <button class="filter-btn active" data-filter="all">
+                        All Bookings
+                    </button>
+
+                    <button class="filter-btn" data-filter="pending">
+                        Pending
+                    </button>
+
+                    <button class="filter-btn" data-filter="accepted">
+                        Accepted
+                    </button>
+
+                    <button class="filter-btn" data-filter="completed">
+                        Completed
+                    </button>
+
+                </div>
+
+
+                <!-- BOOKING LIST -->
+                <div class="booking-list" id="bookingList">
+
+
+                    <!-- BOOKING 1 -->
+                    <article class="booking-card" data-status="pending">
+
+                        <div class="customer-avatar">
+                            A
+                        </div>
+
+                        <div class="booking-info">
+
+                            <span class="booking-category">
+                                NEW REQUEST
+                            </span>
+
+                            <h3>Alfia Khatoon</h3>
+
+                            <p>Home Cleaning Service</p>
+
+                            <div class="booking-meta">
+
+                                <span>📅 20 November 2026</span>
+
+                                <span>◷ 11:00 AM</span>
+
+                                <span>📍 South Delhi</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="booking-right">
+
+                            <span class="status pending-status">
+                                Pending
+                            </span>
+
+                            <div class="booking-actions">
+
+                                <button class="accept-btn">
+                                    Accept
+                                </button>
+
+                                <button class="reject-btn">
+                                    Reject
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- BOOKING 2 -->
+                    <article class="booking-card" data-status="pending">
+
+                        <div class="customer-avatar avatar-two">
+                            S
+                        </div>
+
+                        <div class="booking-info">
+
+                            <span class="booking-category">
+                                NEW REQUEST
+                            </span>
+
+                            <h3>Simran Kapoor</h3>
+
+                            <p>Deep Home Cleaning</p>
+
+                            <div class="booking-meta">
+
+                                <span>📅 21 November 2026</span>
+
+                                <span>◷ 02:00 PM</span>
+
+                                <span>📍 East Delhi</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="booking-right">
+
+                            <span class="status pending-status">
+                                Pending
+                            </span>
+
+                            <div class="booking-actions">
+
+                                <button class="accept-btn">
+                                    Accept
+                                </button>
+
+                                <button class="reject-btn">
+                                    Reject
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- BOOKING 3 -->
+                    <article class="booking-card" data-status="accepted">
+
+                        <div class="customer-avatar avatar-three">
+                            P
+                        </div>
+
+                        <div class="booking-info">
+
+                            <span class="booking-category">
+                                CONFIRMED BOOKING
+                            </span>
+
+                            <h3>Priya Sharma</h3>
+
+                            <p>Home Cleaning Service</p>
+
+                            <div class="booking-meta">
+
+                                <span>📅 22 November 2026</span>
+
+                                <span>◷ 10:00 AM</span>
+
+                                <span>📍 Central Delhi</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="booking-right">
+
+                            <span class="status accepted-status">
+                                Accepted
+                            </span>
+
+                            <button class="complete-btn">
+                                Mark Completed
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- BOOKING 4 -->
+                    <article class="booking-card" data-status="completed">
+
+                        <div class="customer-avatar avatar-four">
+                            N
+                        </div>
+
+                        <div class="booking-info">
+
+                            <span class="booking-category">
+                                SERVICE COMPLETED
+                            </span>
+
+                            <h3>Neha Gupta</h3>
+
+                            <p>Regular Home Cleaning</p>
+
+                            <div class="booking-meta">
+
+                                <span>📅 12 November 2026</span>
+
+                                <span>◷ 12:00 PM</span>
+
+                                <span>📍 North Delhi</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="booking-right">
+
+                            <span class="status completed-status">
+                                Completed
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- BOOKING 5 -->
+                    <article class="booking-card" data-status="completed">
+
+                        <div class="customer-avatar avatar-five">
+                            M
+                        </div>
+
+                        <div class="booking-info">
+
+                            <span class="booking-category">
+                                SERVICE COMPLETED
+                            </span>
+
+                            <h3>Mehak Arora</h3>
+
+                            <p>Kitchen Cleaning</p>
+
+                            <div class="booking-meta">
+
+                                <span>📅 10 November 2026</span>
+
+                                <span>◷ 03:00 PM</span>
+
+                                <span>📍 West Delhi</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="booking-right">
+
+                            <span class="status completed-status">
+                                Completed
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <p class="demo-note">
+                    These are sample bookings displayed for the frontend demo.
+                </p>
+
+            </section>
+
+
+            <!-- MY SERVICES -->
+            <section class="services-section" id="services">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            YOUR LISTINGS
+                        </p>
+
+                        <h2>My Services</h2>
+
+                        <p class="section-subtitle">
+                            Manage the services you offer.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="add-service-btn"
+                        onclick="alert('Service creation will be connected with the backend.')"
+                    >
+                        + Add Service
+                    </button>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        🏠
+                    </div>
+
+                    <div class="service-info">
+
+                        <span class="service-tag">
+                            HOME SERVICES
+                        </span>
+
+                        <h3>Home Cleaning</h3>
+
+                        <p>
+                            Professional home cleaning services for your everyday needs.
+                        </p>
+
+                        <span class="service-location">
+                            📍 North Delhi
+                        </span>
+
+                    </div>
+
+                    <div class="service-price">
+
+                        <span>Starting from</span>
+
+                        <h3>₹799</h3>
+
+                        <span>per service</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROFILE -->
+            <section class="profile-section" id="profile">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            ACCOUNT SETTINGS
+                        </p>
+
+                        <h2>My Profile</h2>
+
+                        <p class="section-subtitle">
+                            Manage your professional information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-card">
+
+                    <div class="profile-avatar large">
+                        R
+                    </div>
+
+                    <div class="profile-details">
+
+                        <h3>Rahul Sharma</h3>
+
+                        <p>rahul@example.com</p>
+
+                        <span>Service Provider Account</span>
+
+                    </div>
+
+                    <button
+                        class="edit-profile-btn"
+                        onclick="alert('Profile editing will be connected with the backend.')"
+                    >
+                        Edit Profile ↗
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                Grow your business. Serve your neighbourhood.
+                <span>♥</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // BOOKING FILTERS
+
+        const filterButtons = document.querySelectorAll(".filter-btn");
+
+        const bookingCards = document.querySelectorAll(".booking-card");
+
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                filterButtons.forEach(btn =>
+                    btn.classList.remove("active")
+                );
+
+                button.classList.add("active");
+
+                const filter = button.dataset.filter;
+
+                bookingCards.forEach(card => {
+
+                    card.style.display =
+                        filter === "all" || card.dataset.status === filter
+                            ? "flex"
+                            : "none";
+
+                });
+
+            });
+
+        });
+
+
+        // UPDATE STATISTICS
+
+        function updateStats() {
+
+            const cards = [
+                ...document.querySelectorAll(".booking-card")
+            ];
+
+            document.getElementById("totalBookings").textContent =
+                cards.length;
+
+            document.getElementById("pendingBookings").textContent =
+                cards.filter(card =>
+                    card.dataset.status === "pending"
+                ).length;
+
+            document.getElementById("acceptedBookings").textContent =
+                cards.filter(card =>
+                    card.dataset.status === "accepted"
+                ).length;
+
+            document.getElementById("completedBookings").textContent =
+                cards.filter(card =>
+                    card.dataset.status === "completed"
+                ).length;
+
+        }
+
+
+        // ACCEPT BOOKING
+
+        document.querySelectorAll(".accept-btn").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const card = button.closest(".booking-card");
+
+                card.dataset.status = "accepted";
+
+                card.querySelector(".booking-category").textContent =
+                    "CONFIRMED BOOKING";
+
+                card.querySelector(".booking-right").innerHTML = `
+                    <span class="status accepted-status">
+                        Accepted
+                    </span>
+
+                    <button class="complete-btn">
+                        Mark Completed
+                    </button>
+                `;
+
+                attachCompleteAction(card);
+
+                updateStats();
+
+            });
+
+        });
+
+
+        // REJECT BOOKING
+
+        document.querySelectorAll(".reject-btn").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const confirmReject = confirm(
+                    "Are you sure you want to reject this booking?"
+                );
+
+                if (confirmReject) {
+
+                    const card = button.closest(".booking-card");
+
+                    card.remove();
+
+                    updateStats();
+
+                }
+
+            });
+
+        });
+
+
+        // COMPLETE BOOKING
+
+        function attachCompleteAction(card) {
+
+            const button = card.querySelector(".complete-btn");
+
+            if (!button) return;
+
+            button.addEventListener("click", () => {
+
+                card.dataset.status = "completed";
+
+                card.querySelector(".booking-category").textContent =
+                    "SERVICE COMPLETED";
+
+                card.querySelector(".booking-right").innerHTML = `
+                    <span class="status completed-status">
+                        Completed
+                    </span>
+                `;
+
+                updateStats();
+
+            });
+
+        }
+
+
+        document.querySelectorAll(".complete-btn").forEach(button => {
+
+            attachCompleteAction(
+                button.closest(".booking-card")
+            );
+
+        });
+
+
+        // INITIALISE DASHBOARD
+
+        updateStats();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Details | LocalLoop</title>
+    <link rel="stylesheet" href="provider-details.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <a href="../index.html" class="logo">Local<span>Loop.</span></a>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <a href="login.html" class="nav-btn">Login</a>
+
+    </header>
+
+
+    <main class="container">
+
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="explore.html">Explore Services</a>
+            <span>/</span>
+            <span>Provider Details</span>
+        </div>
+
+
+        <section class="profile-layout">
+
+            <div class="profile-main">
+
+                <div class="profile-banner">
+
+                    <div class="profile-icon" id="providerIcon">🏠</div>
+
+                    <div class="profile-heading">
+                        <span class="category-tag" id="providerCategory">
+                            Home Services
+                        </span>
+
+                        <h1 id="providerName">Home Cleaning Expert</h1>
+
+                        <p id="providerLocation">📍 North Delhi</p>
+                    </div>
+
+                </div>
+
+
+                <div class="profile-card">
+
+                    <h2>About This Service</h2>
+
+                    <p id="providerDescription">
+                        Professional home cleaning and housekeeping services.
+                    </p>
+
+                    <div class="divider"></div>
+
+                    <h2>Service Information</h2>
+
+                    <div class="info-grid">
+
+                        <div class="info-item">
+                            <span class="info-icon">👤</span>
+                            <div>
+                                <small>Service Provider</small>
+                                <strong id="providerPerson">Rahul Sharma</strong>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div>
+                                <small>Location</small>
+                                <strong id="providerLocation2">North Delhi</strong>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">🏷️</span>
+                            <div>
+                                <small>Category</small>
+                                <strong id="providerCategory2">Home Services</strong>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">💰</span>
+                            <div>
+                                <small>Starting Price</small>
+                                <strong id="providerPrice">₹800</strong>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <h2>Why Choose This Service?</h2>
+
+                    <div class="benefits">
+
+                        <div>✓ Easy service discovery</div>
+                        <div>✓ Direct booking requests</div>
+                        <div>✓ Clear starting prices</div>
+                        <div>✓ Convenient local services</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-card reviews-card">
+
+                    <h2>Customer Reviews</h2>
+
+                    <p class="review-note">
+                        Customer reviews will appear here once customers
+                        complete their bookings and submit feedback.
+                    </p>
+
+                    <div id="reviewList">
+                        <div class="empty-review">
+                            ⭐ No reviews yet
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <aside class="booking-card">
+
+                <span class="eyebrow">SERVICE BOOKING</span>
+
+                <h2>Interested in this service?</h2>
+
+                <p>
+                    Connect with the service provider by sending a
+                    booking request.
+                </p>
+
+                <div class="booking-price">
+                    <small>Starting from</small>
+                    <strong id="bookingPrice">₹800</strong>
+                </div>
+
+                <button class="book-btn" id="bookButton">
+                    Book This Service →
+                </button>
+
+                <div class="booking-note">
+                    Your booking request will be submitted after
+                    you log in.
+                </div>
+
+                <div class="booking-divider"></div>
+
+                <div class="contact-info">
+                    <span>📍</span>
+                    <div>
+                        <strong>Service Location</strong>
+                        <p id="bookingLocation">North Delhi</p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <span>👤</span>
+                    <div>
+                        <strong>Provider</strong>
+                        <p id="bookingPerson">Rahul Sharma</p>
+                    </div>
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <h2>Local<span>Loop.</span></h2>
+        <p>Discover Local Services. Compare. Connect.</p>
+        <p class="copyright">© 2026 LocalLoop. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+
+        // SAMPLE PROVIDER DATA
+        // These listings will later be replaced by backend data.
+
+        const providers = {
+
+            1: {
+                name: "Home Cleaning Expert",
+                person: "Rahul Sharma",
+                category: "Home Services",
+                location: "North Delhi",
+                price: 800,
+                icon: "🏠",
+                description: "Professional home cleaning and housekeeping services for homes and apartments."
+            },
+
+            2: {
+                name: "Mathematics Tutor",
+                person: "Priya Verma",
+                category: "Education",
+                location: "Central Delhi",
+                price: 500,
+                icon: "📚",
+                description: "Personalised mathematics lessons designed to help students improve their understanding and academic performance."
+            },
+
+            3: {
+                name: "Professional Makeup Artist",
+                person: "Ananya Singh",
+                category: "Beauty",
+                location: "South Delhi",
+                price: 1200,
+                icon: "💄",
+                description: "Makeup services for parties, celebrations and special occasions."
+            },
+
+            4: {
+                name: "Wedding Photographer",
+                person: "Arjun Mehta",
+                category: "Photography",
+                location: "South Delhi",
+                price: 3500,
+                icon: "📸",
+                description: "Wedding, portrait and event photography services."
+            },
+
+            5: {
+                name: "Electrical Repair Expert",
+                person: "Mohit Kumar",
+                category: "Repairs",
+                location: "West Delhi",
+                price: 600,
+                icon: "🔧",
+                description: "Electrical installation, maintenance and repair services."
+            },
+
+            6: {
+                name: "Deep Cleaning Services",
+                person: "Neha Gupta",
+                category: "Cleaning",
+                location: "North Delhi",
+                price: 1000,
+                icon: "🧹",
+                description: "Detailed home and office cleaning services."
+            },
+
+            7: {
+                name: "Interior Designer",
+                person: "Riya Malhotra",
+                category: "Home Services",
+                location: "South Delhi",
+                price: 2500,
+                icon: "🛋️",
+                description: "Creative interior design and home decoration services."
+            },
+
+            8: {
+                name: "English Language Tutor",
+                person: "Simran Kaur",
+                category: "Education",
+                location: "North Delhi",
+                price: 700,
+                icon: "🎓",
+                description: "English speaking and communication classes."
+            },
+
+            9: {
+                name: "Hair Styling Expert",
+                person: "Mehak Arora",
+                category: "Beauty",
+                location: "West Delhi",
+                price: 900,
+                icon: "💇",
+                description: "Professional hair styling and beauty treatments."
+            },
+
+            10: {
+                name: "Plumbing Expert",
+                person: "Aman Yadav",
+                category: "Plumbing",
+                location: "North Delhi",
+                price: 750,
+                icon: "🚿",
+                description: "Pipe fitting, leakage detection and plumbing repairs."
+            },
+
+            11: {
+                name: "Furniture Craftsman",
+                person: "Vikram Singh",
+                category: "Crafts & Handyman",
+                location: "East Delhi",
+                price: 1500,
+                icon: "🪚",
+                description: "Custom furniture, woodwork and furniture repair services."
+            },
+
+            12: {
+                name: "General Physician",
+                person: "Dr. Sample Provider",
+                category: "Healthcare",
+                location: "Central Delhi",
+                price: 500,
+                icon: "🩺",
+                description: "Illustrative healthcare listing. Provider credentials and availability must be verified."
+            },
+
+            13: {
+                name: "AC Repair Specialist",
+                person: "Karan Verma",
+                category: "Repairs",
+                location: "East Delhi",
+                price: 900,
+                icon: "❄️",
+                description: "Air conditioner servicing and repair services."
+            },
+
+            14: {
+                name: "Office Cleaning Professional",
+                person: "Pooja Sharma",
+                category: "Cleaning",
+                location: "West Delhi",
+                price: 1500,
+                icon: "🧽",
+                description: "Professional office and workspace cleaning."
+            },
+
+            15: {
+                name: "Personal Fitness Trainer",
+                person: "Aarav Kapoor",
+                category: "Healthcare",
+                location: "South Delhi",
+                price: 1000,
+                icon: "🏃",
+                description: "Personal fitness and wellness training."
+            }
+
+        };
+
+
+        // GET PROVIDER ID FROM URL
+
+        const params = new URLSearchParams(window.location.search);
+
+        const providerId = params.get("id");
+
+        const provider = providers[providerId];
+
+
+        // DISPLAY PROVIDER DETAILS
+
+        if (provider) {
+
+            document.title = provider.name + " | LocalLoop";
+
+            document.getElementById("providerIcon").textContent = provider.icon;
+
+            document.getElementById("providerName").textContent = provider.name;
+
+            document.getElementById("providerCategory").textContent = provider.category;
+
+            document.getElementById("providerLocation").textContent =
+                "📍 " + provider.location;
+
+            document.getElementById("providerDescription").textContent =
+                provider.description;
+
+            document.getElementById("providerPerson").textContent =
+                provider.person;
+
+            document.getElementById("providerLocation2").textContent =
+                provider.location;
+
+            document.getElementById("providerCategory2").textContent =
+                provider.category;
+
+            document.getElementById("providerPrice").textContent =
+                "₹" + provider.price.toLocaleString("en-IN");
+
+            document.getElementById("bookingPrice").textContent =
+                "₹" + provider.price.toLocaleString("en-IN");
+
+            document.getElementById("bookingLocation").textContent =
+                provider.location;
+
+            document.getElementById("bookingPerson").textContent =
+                provider.person;
+
+        } else {
+
+            document.querySelector(".profile-layout").innerHTML = `
+                <div class="not-found">
+                    <h2>Provider Not Found</h2>
+                    <p>We couldn't find this service provider.</p>
+                    <a href="explore.html" class="book-btn">
+                        Explore Services
+                    </a>
+                </div>
+            `;
+
+        }
+
+
+        // BOOKING BUTTON
+
+        document.getElementById("bookButton")?.addEventListener("click", () => {
+
+            if (!provider) return;
+
+            window.location.href =
+                "login.html?redirect=" +
+                encodeURIComponent(
+                    "provider-details.html?id=" + providerId
+                );
+
+        });
+
+    </script>
+
+</body>
+</html>
