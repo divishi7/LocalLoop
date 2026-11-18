@@ -51,7 +51,17 @@ const getMyBookings = async (req, res) => {
       customerId: req.user.id
     }).populate({
       path: "providerId",
-      select: "serviceName price location"
+      select: "serviceName price location userId category",
+      populate: [
+        {
+          path: "userId",
+          select: "name email"
+        },
+        {
+          path: "category",
+          select: "name"
+        }
+      ]
     });
 
     res.status(200).json({
@@ -66,7 +76,6 @@ const getMyBookings = async (req, res) => {
     });
   }
 };
-
 // GET PROVIDER BOOKINGS
 const getProviderBookings = async (req, res) => {
   try {

@@ -10,6 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="customer-dashboard.css">
+
+    <style>
+        .loading-message {
+            padding: 24px;
+            text-align: center;
+            opacity: 0.75;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,6 +54,7 @@
         </nav>
 
         <div class="sidebar-bottom">
+
             <div class="help-card">
                 <div class="help-icon">✦</div>
                 <h3>Need help?</h3>
@@ -52,6 +65,7 @@
             <a href="../index.html" class="nav-item logout">
                 <span>↪</span> Log Out
             </a>
+
         </div>
 
     </aside>
@@ -62,16 +76,25 @@
 
         <!-- TOP BAR -->
         <header class="topbar">
+
             <div>
                 <p class="breadcrumb">Dashboard / Overview</p>
-                <h1>Welcome back, <span>Alfia!</span> 👋</h1>
-                <p class="topbar-subtitle">Here's what's happening with your services.</p>
+
+                <h1>
+                    Welcome back,
+                    <span id="welcomeName">there</span>! 👋
+                </h1>
+
+                <p class="topbar-subtitle">
+                    Here's what's happening with your services.
+                </p>
             </div>
 
             <div class="topbar-right">
-                <span class="demo-badge">DEMO PREVIEW</span>
-                <div class="profile-avatar">A</div>
+                <span class="demo-badge">CUSTOMER ACCOUNT</span>
+                <div class="profile-avatar" id="topAvatar">U</div>
             </div>
+
         </header>
 
 
@@ -83,7 +106,7 @@
                     <span>Total Bookings</span>
                     <div class="stat-icon">▣</div>
                 </div>
-                <h2 id="totalBookings">4</h2>
+                <h2 id="totalBookings">0</h2>
                 <p>Your overall bookings</p>
             </div>
 
@@ -92,7 +115,7 @@
                     <span>Pending</span>
                     <div class="stat-icon orange">◷</div>
                 </div>
-                <h2 id="pendingBookings">1</h2>
+                <h2 id="pendingBookings">0</h2>
                 <p>Waiting for confirmation</p>
             </div>
 
@@ -101,7 +124,7 @@
                     <span>Accepted</span>
                     <div class="stat-icon green">✓</div>
                 </div>
-                <h2 id="acceptedBookings">1</h2>
+                <h2 id="acceptedBookings">0</h2>
                 <p>Ready to go</p>
             </div>
 
@@ -110,7 +133,7 @@
                     <span>Completed</span>
                     <div class="stat-icon purple">✦</div>
                 </div>
-                <h2 id="completedBookings">2</h2>
+                <h2 id="completedBookings">0</h2>
                 <p>Services completed</p>
             </div>
 
@@ -119,14 +142,22 @@
 
         <!-- QUICK ACTION -->
         <section class="quick-action">
+
             <div>
                 <p class="eyebrow">DISCOVER SOMETHING NEW</p>
                 <h2>Looking for a service?</h2>
-                <p>Find trusted local professionals for your everyday needs.</p>
-                <a href="explore.html" class="primary-btn">Explore Services ↗</a>
+
+                <p>
+                    Find trusted local professionals for your everyday needs.
+                </p>
+
+                <a href="explore.html" class="primary-btn">
+                    Explore Services ↗
+                </a>
             </div>
 
             <div class="quick-decoration">✦</div>
+
         </section>
 
 
@@ -137,118 +168,44 @@
                 <div>
                     <p class="eyebrow">YOUR ACTIVITY</p>
                     <h2>My Bookings</h2>
-                    <p class="section-subtitle">Keep track of all your service bookings.</p>
+                    <p class="section-subtitle">
+                        Keep track of all your service bookings.
+                    </p>
                 </div>
             </div>
 
 
             <!-- FILTERS -->
             <div class="booking-filters">
-                <button class="filter-btn active" data-filter="all">All Bookings</button>
-                <button class="filter-btn" data-filter="pending">Pending</button>
-                <button class="filter-btn" data-filter="accepted">Accepted</button>
-                <button class="filter-btn" data-filter="completed">Completed</button>
+
+                <button class="filter-btn active" data-filter="all">
+                    All Bookings
+                </button>
+
+                <button class="filter-btn" data-filter="pending">
+                    Pending
+                </button>
+
+                <button class="filter-btn" data-filter="accepted">
+                    Accepted
+                </button>
+
+                <button class="filter-btn" data-filter="completed">
+                    Completed
+                </button>
+
             </div>
 
 
-            <!-- BOOKING LIST -->
+            <!-- DYNAMIC BOOKING LIST -->
             <div class="booking-list" id="bookingList">
-
-                <article class="booking-card" data-status="pending">
-
-                    <div class="booking-icon">🏠</div>
-
-                    <div class="booking-info">
-                        <span class="booking-category">HOME SERVICES</span>
-                        <h3>Home Cleaning</h3>
-                        <p>Provider: Priya Verma</p>
-                        <div class="booking-meta">
-                            <span>📅 20 November 2026</span>
-                            <span>◷ 11:00 AM</span>
-                            <span>📍 South Delhi</span>
-                        </div>
-                    </div>
-
-                    <div class="booking-right">
-                        <span class="status pending-status">Pending</span>
-                        <button class="cancel-btn">Cancel Booking</button>
-                    </div>
-
-                </article>
-
-
-                <article class="booking-card" data-status="accepted">
-
-                    <div class="booking-icon">📚</div>
-
-                    <div class="booking-info">
-                        <span class="booking-category">EDUCATION</span>
-                        <h3>Mathematics Tutoring</h3>
-                        <p>Provider: Rahul Sharma</p>
-                        <div class="booking-meta">
-                            <span>📅 22 November 2026</span>
-                            <span>◷ 04:00 PM</span>
-                            <span>📍 North Delhi</span>
-                        </div>
-                    </div>
-
-                    <div class="booking-right">
-                        <span class="status accepted-status">Accepted</span>
-                        <span class="booking-note">Confirmed ✓</span>
-                    </div>
-
-                </article>
-
-
-                <article class="booking-card" data-status="completed">
-
-                    <div class="booking-icon">💇</div>
-
-                    <div class="booking-info">
-                        <span class="booking-category">BEAUTY</span>
-                        <h3>Hair Styling</h3>
-                        <p>Provider: Ananya Singh</p>
-                        <div class="booking-meta">
-                            <span>📅 12 November 2026</span>
-                            <span>◷ 02:00 PM</span>
-                            <span>📍 East Delhi</span>
-                        </div>
-                    </div>
-
-                    <div class="booking-right">
-                        <span class="status completed-status">Completed</span>
-                        <button class="review-btn">Leave a Review</button>
-                    </div>
-
-                </article>
-
-
-                <article class="booking-card" data-status="completed">
-
-                    <div class="booking-icon">📸</div>
-
-                    <div class="booking-info">
-                        <span class="booking-category">PHOTOGRAPHY</span>
-                        <h3>Event Photography</h3>
-                        <p>Provider: Riya Malhotra</p>
-                        <div class="booking-meta">
-                            <span>📅 08 November 2026</span>
-                            <span>◷ 10:00 AM</span>
-                            <span>📍 Central Delhi</span>
-                        </div>
-                    </div>
-
-                    <div class="booking-right">
-                        <span class="status completed-status">Completed</span>
-                        <button class="review-btn">Leave a Review</button>
-                    </div>
-
-                </article>
-
+                <p class="loading-message" id="bookingMessage">
+                    Loading your bookings...
+                </p>
             </div>
 
-            <p class="demo-note">
-                These are sample bookings displayed for the frontend demo.
+            <p class="demo-note" id="bookingNote" hidden>
+                Showing bookings from your LocalLoop account.
             </p>
 
         </section>
@@ -256,25 +213,34 @@
 
         <!-- PROFILE -->
         <section class="profile-section" id="profile">
+
             <div>
                 <p class="eyebrow">ACCOUNT SETTINGS</p>
                 <h2>My Profile</h2>
-                <p class="section-subtitle">Your account information.</p>
+                <p class="section-subtitle">
+                    Your account information.
+                </p>
             </div>
 
             <div class="profile-card">
-                <div class="profile-avatar large">A</div>
+
+                <div class="profile-avatar large" id="profileAvatar">
+                    U
+                </div>
 
                 <div class="profile-details">
-                    <h3>Alfia Khatoon</h3>
-                    <p>alfia@example.com</p>
+                    <h3 id="profileName">Customer</h3>
+                    <p id="profileEmail"></p>
                     <span>Customer Account</span>
                 </div>
 
-                <button class="edit-profile-btn" onclick="alert('Profile editing will be connected with the backend.')">
+                <button class="edit-profile-btn"
+                    onclick="alert('Profile editing will be connected with the backend.')">
                     Edit Profile ↗
                 </button>
+
             </div>
+
         </section>
 
 
@@ -289,7 +255,9 @@
 
 <!-- REVIEW MODAL -->
 <div class="modal-overlay" id="reviewModal">
+
     <div class="review-modal">
+
         <button class="close-modal" id="closeModal">×</button>
 
         <p class="eyebrow">SHARE YOUR EXPERIENCE</p>
@@ -304,124 +272,432 @@
             <button data-rating="5">★</button>
         </div>
 
-        <textarea id="reviewText" placeholder="Write your experience..."></textarea>
+        <textarea id="reviewText"
+            placeholder="Write your experience..."></textarea>
 
         <button class="primary-btn submit-review" id="submitReview">
             Submit Review
         </button>
+
     </div>
+
 </div>
 
 
 <script>
-    // BOOKING FILTERS
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const bookingCards = document.querySelectorAll(".booking-card");
 
-    filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
+const API_URL = "http://localhost:5000/api";
 
-            filterButtons.forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
+const token = localStorage.getItem("token");
 
-            const filter = button.dataset.filter;
+const currentUser = JSON.parse(
+    localStorage.getItem("user") || "null"
+);
 
-            bookingCards.forEach(card => {
-                if (filter === "all" || card.dataset.status === filter) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
+let allBookings = [];
+
+
+// CHECK LOGIN
+if (!token || !currentUser) {
+
+    alert("Please log in to view your dashboard.");
+
+    window.location.href = "login.html";
+
+} else if (currentUser.role !== "customer") {
+
+    alert("This dashboard is for customer accounts.");
+
+    window.location.href =
+        currentUser.role === "provider"
+            ? "provider-dashboard.html"
+            : "login.html";
+}
+
+
+// PROFILE DETAILS
+function setProfile() {
+
+    const name = currentUser?.name || "Customer";
+
+    const initial = name.charAt(0).toUpperCase() || "U";
+
+    document.getElementById("welcomeName").textContent = name;
+
+    document.getElementById("profileName").textContent = name;
+
+    document.getElementById("profileEmail").textContent =
+        currentUser?.email || "";
+
+    document.getElementById("topAvatar").textContent = initial;
+
+    document.getElementById("profileAvatar").textContent = initial;
+
+}
+
+
+// FORMAT DATE
+function formatDate(value) {
+
+    if (!value) return "Date not available";
+
+    const date = new Date(value);
+
+    return Number.isNaN(date.getTime())
+        ? value
+        : date.toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
         });
+
+}
+
+
+// UPDATE DASHBOARD STATS
+function updateStats() {
+
+    document.getElementById("totalBookings").textContent =
+        allBookings.length;
+
+    ["pending", "accepted", "completed"].forEach(status => {
+
+        const id = status + "Bookings";
+
+        document.getElementById(id).textContent =
+            allBookings.filter(b => b.status === status).length;
+
     });
 
+}
 
-    // UPDATE DASHBOARD COUNTS
-    function updateStats() {
-        const cards = [...document.querySelectorAll(".booking-card")];
 
-        document.getElementById("totalBookings").textContent = cards.length;
+// DISPLAY BOOKINGS
+function renderBookings(filter = "all") {
 
-        document.getElementById("pendingBookings").textContent =
-            cards.filter(card => card.dataset.status === "pending").length;
+    const list = document.getElementById("bookingList");
 
-        document.getElementById("acceptedBookings").textContent =
-            cards.filter(card => card.dataset.status === "accepted").length;
+    list.innerHTML = "";
 
-        document.getElementById("completedBookings").textContent =
-            cards.filter(card => card.dataset.status === "completed").length;
+    const filtered = allBookings.filter(booking =>
+        filter === "all" || booking.status === filter
+    );
+
+    if (!filtered.length) {
+
+        list.innerHTML = `
+            <p class="loading-message">
+                No ${filter === "all" ? "" : filter + " "}bookings found.
+            </p>
+        `;
+
+        return;
     }
 
 
-    // CANCEL BOOKING - DEMO ONLY
-    document.querySelectorAll(".cancel-btn").forEach(button => {
-        button.addEventListener("click", () => {
+    filtered.forEach(booking => {
 
-            const confirmCancel = confirm("Are you sure you want to cancel this booking?");
+        const provider =
+            booking.providerId &&
+            typeof booking.providerId === "object"
+                ? booking.providerId
+                : {};
 
-            if (confirmCancel) {
-                const card = button.closest(".booking-card");
-                card.remove();
-                updateStats();
-                alert("Demo booking cancelled successfully!");
+        const status = booking.status || "pending";
+
+        const service = provider.serviceName || "Service";
+
+        const providerName =
+            provider.userId?.name || "LocalLoop Provider";
+
+        const category =
+            provider.category?.name || "LOCAL SERVICE";
+
+        const location =
+            provider.location ||
+            booking.address ||
+            "Location not available";
+
+        const price = provider.price != null
+            ? `₹${Number(provider.price).toLocaleString("en-IN")}`
+            : "";
+
+
+        const card = document.createElement("article");
+
+        card.className = "booking-card";
+
+        card.dataset.status = status;
+
+
+        card.innerHTML = `
+
+            <div class="booking-icon">▣</div>
+
+            <div class="booking-info">
+
+                <span class="booking-category">
+                    ${category}
+                </span>
+
+                <h3>${service}</h3>
+
+                <p>Provider: ${providerName}</p>
+
+                <div class="booking-meta">
+
+                    <span>
+                        📅 ${formatDate(booking.bookingDate)}
+                    </span>
+
+                    <span>
+                        ◷ ${booking.bookingTime || "Time not available"}
+                    </span>
+
+                    <span>
+                        📍 ${location}
+                    </span>
+
+                    ${price ? `<span>${price}</span>` : ""}
+
+                </div>
+
+            </div>
+
+            <div class="booking-right">
+
+                <span class="status ${status}-status">
+                    ${status.charAt(0).toUpperCase() + status.slice(1)}
+                </span>
+
+                ${
+                    status === "pending" || status === "accepted"
+                        ? `<button class="cancel-btn">Cancel Booking</button>`
+                        : ""
+                }
+
+            </div>
+
+        `;
+
+
+        const cancelButton = card.querySelector(".cancel-btn");
+
+        if (cancelButton) {
+
+            cancelButton.addEventListener("click", () =>
+                cancelBooking(booking._id)
+            );
+
+        }
+
+        list.appendChild(card);
+
+    });
+
+}
+
+
+// FETCH BOOKINGS FROM BACKEND
+async function loadBookings() {
+
+    const message = document.getElementById("bookingMessage");
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/bookings/my-bookings`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             }
-        });
-    });
+        );
 
+        const data = await response.json();
 
-    // REVIEW MODAL
-    const reviewModal = document.getElementById("reviewModal");
-    let selectedRating = 0;
+        if (!response.ok || !data.success) {
 
-    document.querySelectorAll(".review-btn").forEach(button => {
-        button.addEventListener("click", () => {
-            reviewModal.classList.add("show");
-        });
-    });
+            throw new Error(
+                data.message || "Could not load bookings."
+            );
 
-    document.getElementById("closeModal").addEventListener("click", () => {
-        reviewModal.classList.remove("show");
-    });
-
-    document.querySelectorAll(".stars button").forEach(star => {
-        star.addEventListener("click", () => {
-            selectedRating = Number(star.dataset.rating);
-
-            document.querySelectorAll(".stars button").forEach(item => {
-                item.classList.toggle(
-                    "selected",
-                    Number(item.dataset.rating) <= selectedRating
-                );
-            });
-        });
-    });
-
-    document.getElementById("submitReview").addEventListener("click", () => {
-        const feedback = document.getElementById("reviewText").value.trim();
-
-        if (selectedRating === 0) {
-            alert("Please select a star rating.");
-            return;
         }
 
-        if (!feedback) {
-            alert("Please write a short review.");
-            return;
+        allBookings = data.bookings || [];
+
+        updateStats();
+
+        renderBookings();
+
+        document.getElementById("bookingNote").hidden = false;
+
+    } catch (error) {
+
+        console.error(error);
+
+        if (message) {
+
+            message.textContent =
+                error.message || "Unable to load bookings. Please refresh.";
+
+        } else {
+
+            document.getElementById("bookingList").innerHTML =
+                `<p class="loading-message">${error.message}</p>`;
+
         }
 
-        alert("Thank you! Your demo review has been submitted.");
+    }
 
-        reviewModal.classList.remove("show");
-        document.getElementById("reviewText").value = "";
-        selectedRating = 0;
+}
 
-        document.querySelectorAll(".stars button").forEach(star => {
-            star.classList.remove("selected");
-        });
+
+// CANCEL BOOKING
+async function cancelBooking(id) {
+
+    if (!confirm("Are you sure you want to cancel this booking?")) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/bookings/${id}/status`,
+            {
+                method: "PATCH",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+
+                body: JSON.stringify({
+                    status: "cancelled"
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+
+            throw new Error(
+                data.message || "Could not cancel booking."
+            );
+
+        }
+
+        alert("Your booking has been cancelled.");
+
+        await loadBookings();
+
+        const activeFilter =
+            document.querySelector(".filter-btn.active")?.dataset.filter
+            || "all";
+
+        renderBookings(activeFilter);
+
+    } catch (error) {
+
+        alert(error.message || "Something went wrong.");
+
+    }
+
+}
+
+
+// BOOKING FILTERS
+document.querySelectorAll(".filter-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelectorAll(".filter-btn").forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        renderBookings(button.dataset.filter);
+
     });
 
-    updateStats();
+});
+
+
+// LOGOUT
+document.querySelector(".logout").addEventListener("click", event => {
+
+    event.preventDefault();
+
+    localStorage.removeItem("token");
+
+    localStorage.removeItem("user");
+
+    window.location.href = "../index.html";
+
+});
+
+
+// REVIEW MODAL
+// Review submission is not connected to the backend yet.
+
+const reviewModal = document.getElementById("reviewModal");
+
+let selectedRating = 0;
+
+
+document.getElementById("closeModal").addEventListener("click", () => {
+
+    reviewModal.classList.remove("show");
+
+});
+
+
+document.querySelectorAll(".stars button").forEach(star => {
+
+    star.addEventListener("click", () => {
+
+        selectedRating = Number(star.dataset.rating);
+
+        document.querySelectorAll(".stars button").forEach(item => {
+
+            item.classList.toggle(
+                "selected",
+                Number(item.dataset.rating) <= selectedRating
+            );
+
+        });
+
+    });
+
+});
+
+
+document.getElementById("submitReview").addEventListener("click", () => {
+
+    if (!selectedRating) {
+
+        return alert("Please select a star rating.");
+
+    }
+
+    if (!document.getElementById("reviewText").value.trim()) {
+
+        return alert("Please write a short review.");
+
+    }
+
+    alert("Review submission is not connected to the backend yet.");
+
+});
+
+
+// INITIALIZE DASHBOARD
+setProfile();
+
+loadBookings();
+
 </script>
 
 </body>

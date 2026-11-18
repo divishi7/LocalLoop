@@ -1,3 +1,5 @@
+?variant="standard" id="73921" title="LocalLoop – Provider Details HTML"}
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,9 +52,9 @@
                             Home Services
                         </span>
 
-                        <h1 id="providerName">Home Cleaning Expert</h1>
+                        <h1 id="providerName">Loading...</h1>
 
-                        <p id="providerLocation">📍 North Delhi</p>
+                        <p id="providerLocation">📍 Loading...</p>
                     </div>
 
                 </div>
@@ -63,7 +65,7 @@
                     <h2>About This Service</h2>
 
                     <p id="providerDescription">
-                        Professional home cleaning and housekeeping services.
+                        Loading service information...
                     </p>
 
                     <div class="divider"></div>
@@ -76,7 +78,7 @@
                             <span class="info-icon">👤</span>
                             <div>
                                 <small>Service Provider</small>
-                                <strong id="providerPerson">Rahul Sharma</strong>
+                                <strong id="providerPerson">Loading...</strong>
                             </div>
                         </div>
 
@@ -84,7 +86,7 @@
                             <span class="info-icon">📍</span>
                             <div>
                                 <small>Location</small>
-                                <strong id="providerLocation2">North Delhi</strong>
+                                <strong id="providerLocation2">Loading...</strong>
                             </div>
                         </div>
 
@@ -92,7 +94,7 @@
                             <span class="info-icon">🏷️</span>
                             <div>
                                 <small>Category</small>
-                                <strong id="providerCategory2">Home Services</strong>
+                                <strong id="providerCategory2">Loading...</strong>
                             </div>
                         </div>
 
@@ -100,7 +102,7 @@
                             <span class="info-icon">💰</span>
                             <div>
                                 <small>Starting Price</small>
-                                <strong id="providerPrice">₹800</strong>
+                                <strong id="providerPrice">Loading...</strong>
                             </div>
                         </div>
 
@@ -155,10 +157,10 @@
 
                 <div class="booking-price">
                     <small>Starting from</small>
-                    <strong id="bookingPrice">₹800</strong>
+                    <strong id="bookingPrice">Loading...</strong>
                 </div>
 
-                <button class="book-btn" id="bookButton">
+                <button class="book-btn" id="bookButton" disabled>
                     Book This Service →
                 </button>
 
@@ -173,7 +175,7 @@
                     <span>📍</span>
                     <div>
                         <strong>Service Location</strong>
-                        <p id="bookingLocation">North Delhi</p>
+                        <p id="bookingLocation">Loading...</p>
                     </div>
                 </div>
 
@@ -181,7 +183,7 @@
                     <span>👤</span>
                     <div>
                         <strong>Provider</strong>
-                        <p id="bookingPerson">Rahul Sharma</p>
+                        <p id="bookingPerson">Loading...</p>
                     </div>
                 </div>
 
@@ -200,243 +202,339 @@
 
 
     <script>
+const API_URL = "http://localhost:5000/api";
 
-        // SAMPLE PROVIDER DATA
-        // These listings will later be replaced by backend data.
+const params = new URLSearchParams(window.location.search);
+const providerId = params.get("id");
 
-        const providers = {
+let currentProvider = null;
+let existingBooking = null;
 
-            1: {
-                name: "Home Cleaning Expert",
-                person: "Rahul Sharma",
-                category: "Home Services",
-                location: "North Delhi",
-                price: 800,
-                icon: "🏠",
-                description: "Professional home cleaning and housekeeping services for homes and apartments."
-            },
+const bookButton = document.getElementById("bookButton");
 
-            2: {
-                name: "Mathematics Tutor",
-                person: "Priya Verma",
-                category: "Education",
-                location: "Central Delhi",
-                price: 500,
-                icon: "📚",
-                description: "Personalised mathematics lessons designed to help students improve their understanding and academic performance."
-            },
-
-            3: {
-                name: "Professional Makeup Artist",
-                person: "Ananya Singh",
-                category: "Beauty",
-                location: "South Delhi",
-                price: 1200,
-                icon: "💄",
-                description: "Makeup services for parties, celebrations and special occasions."
-            },
-
-            4: {
-                name: "Wedding Photographer",
-                person: "Arjun Mehta",
-                category: "Photography",
-                location: "South Delhi",
-                price: 3500,
-                icon: "📸",
-                description: "Wedding, portrait and event photography services."
-            },
-
-            5: {
-                name: "Electrical Repair Expert",
-                person: "Mohit Kumar",
-                category: "Repairs",
-                location: "West Delhi",
-                price: 600,
-                icon: "🔧",
-                description: "Electrical installation, maintenance and repair services."
-            },
-
-            6: {
-                name: "Deep Cleaning Services",
-                person: "Neha Gupta",
-                category: "Cleaning",
-                location: "North Delhi",
-                price: 1000,
-                icon: "🧹",
-                description: "Detailed home and office cleaning services."
-            },
-
-            7: {
-                name: "Interior Designer",
-                person: "Riya Malhotra",
-                category: "Home Services",
-                location: "South Delhi",
-                price: 2500,
-                icon: "🛋️",
-                description: "Creative interior design and home decoration services."
-            },
-
-            8: {
-                name: "English Language Tutor",
-                person: "Simran Kaur",
-                category: "Education",
-                location: "North Delhi",
-                price: 700,
-                icon: "🎓",
-                description: "English speaking and communication classes."
-            },
-
-            9: {
-                name: "Hair Styling Expert",
-                person: "Mehak Arora",
-                category: "Beauty",
-                location: "West Delhi",
-                price: 900,
-                icon: "💇",
-                description: "Professional hair styling and beauty treatments."
-            },
-
-            10: {
-                name: "Plumbing Expert",
-                person: "Aman Yadav",
-                category: "Plumbing",
-                location: "North Delhi",
-                price: 750,
-                icon: "🚿",
-                description: "Pipe fitting, leakage detection and plumbing repairs."
-            },
-
-            11: {
-                name: "Furniture Craftsman",
-                person: "Vikram Singh",
-                category: "Crafts & Handyman",
-                location: "East Delhi",
-                price: 1500,
-                icon: "🪚",
-                description: "Custom furniture, woodwork and furniture repair services."
-            },
-
-            12: {
-                name: "General Physician",
-                person: "Dr. Sample Provider",
-                category: "Healthcare",
-                location: "Central Delhi",
-                price: 500,
-                icon: "🩺",
-                description: "Illustrative healthcare listing. Provider credentials and availability must be verified."
-            },
-
-            13: {
-                name: "AC Repair Specialist",
-                person: "Karan Verma",
-                category: "Repairs",
-                location: "East Delhi",
-                price: 900,
-                icon: "❄️",
-                description: "Air conditioner servicing and repair services."
-            },
-
-            14: {
-                name: "Office Cleaning Professional",
-                person: "Pooja Sharma",
-                category: "Cleaning",
-                location: "West Delhi",
-                price: 1500,
-                icon: "🧽",
-                description: "Professional office and workspace cleaning."
-            },
-
-            15: {
-                name: "Personal Fitness Trainer",
-                person: "Aarav Kapoor",
-                category: "Healthcare",
-                location: "South Delhi",
-                price: 1000,
-                icon: "🏃",
-                description: "Personal fitness and wellness training."
-            }
-
-        };
+const icons = {
+    "home services": "🏠",
+    "education": "📚",
+    "beauty": "✨",
+    "photography": "📸",
+    "repairs": "🔧",
+    "cleaning": "🧹",
+    "plumbing": "🚿",
+    "crafts & handyman": "🛠️",
+    "healthcare": "🩺"
+};
 
 
-        // GET PROVIDER ID FROM URL
+// UPDATE BUTTON ACCORDING TO BOOKING STATUS
 
-        const params = new URLSearchParams(window.location.search);
+function updateBookingButton(status) {
 
-        const providerId = params.get("id");
+    const statuses = {
+        pending: "⏳ Pending",
+        accepted: "✓ Accepted",
+        rejected: "✕ Rejected",
+        completed: "✓ Completed",
+        cancelled: "Booking Cancelled"
+    };
 
-        const provider = providers[providerId];
+    if (status === "rejected" || status === "cancelled") {
+        bookButton.textContent = "Book Again →";
+        bookButton.disabled = false;
+        existingBooking = null;
+        return;
+    }
+
+    bookButton.textContent = statuses[status] || "Book This Service →";
+    bookButton.disabled = Boolean(status);
+}
 
 
-        // DISPLAY PROVIDER DETAILS
+// LOAD PROVIDER DETAILS
 
-        if (provider) {
+async function loadProviderDetails() {
 
-            document.title = provider.name + " | LocalLoop";
+    try {
 
-            document.getElementById("providerIcon").textContent = provider.icon;
-
-            document.getElementById("providerName").textContent = provider.name;
-
-            document.getElementById("providerCategory").textContent = provider.category;
-
-            document.getElementById("providerLocation").textContent =
-                "📍 " + provider.location;
-
-            document.getElementById("providerDescription").textContent =
-                provider.description;
-
-            document.getElementById("providerPerson").textContent =
-                provider.person;
-
-            document.getElementById("providerLocation2").textContent =
-                provider.location;
-
-            document.getElementById("providerCategory2").textContent =
-                provider.category;
-
-            document.getElementById("providerPrice").textContent =
-                "₹" + provider.price.toLocaleString("en-IN");
-
-            document.getElementById("bookingPrice").textContent =
-                "₹" + provider.price.toLocaleString("en-IN");
-
-            document.getElementById("bookingLocation").textContent =
-                provider.location;
-
-            document.getElementById("bookingPerson").textContent =
-                provider.person;
-
-        } else {
-
-            document.querySelector(".profile-layout").innerHTML = `
-                <div class="not-found">
-                    <h2>Provider Not Found</h2>
-                    <p>We couldn't find this service provider.</p>
-                    <a href="explore.html" class="book-btn">
-                        Explore Services
-                    </a>
-                </div>
-            `;
-
+        if (!providerId) {
+            throw new Error("Provider ID missing");
         }
 
+        const response = await fetch(
+            `${API_URL}/providers/${encodeURIComponent(providerId)}`
+        );
 
-        // BOOKING BUTTON
+        const data = await response.json();
 
-        document.getElementById("bookButton")?.addEventListener("click", () => {
+        if (!response.ok || !data.success || !data.provider) {
+            throw new Error(data.message || "Provider not found");
+        }
 
-            if (!provider) return;
+        const provider = data.provider;
 
-            window.location.href =
-                "login.html?redirect=" +
-                encodeURIComponent(
-                    "provider-details.html?id=" + providerId
-                );
+        currentProvider = provider;
+
+        const name = provider.serviceName;
+        const person = provider.userId?.name || "Local Professional";
+        const category = provider.category?.name || "Other";
+        const location = provider.location;
+        const price = Number(provider.price);
+        const description = provider.description;
+
+        const icon = icons[category.toLowerCase()] || "✦";
+
+        const formattedPrice =
+            "₹" + price.toLocaleString("en-IN");
+
+        document.title = name + " | LocalLoop";
+
+        document.getElementById("providerIcon").textContent = icon;
+        document.getElementById("providerName").textContent = name;
+        document.getElementById("providerCategory").textContent = category;
+
+        document.getElementById("providerLocation").textContent =
+            "📍 " + location;
+
+        document.getElementById("providerDescription").textContent =
+            description;
+
+        document.getElementById("providerPerson").textContent = person;
+        document.getElementById("providerLocation2").textContent = location;
+        document.getElementById("providerCategory2").textContent = category;
+        document.getElementById("providerPrice").textContent = formattedPrice;
+
+        document.getElementById("bookingPrice").textContent = formattedPrice;
+        document.getElementById("bookingLocation").textContent = location;
+        document.getElementById("bookingPerson").textContent = person;
+
+        bookButton.disabled = false;
+
+        // Check whether customer has already booked this service
+        await checkExistingBooking();
+
+    } catch (error) {
+
+        console.error("Provider details error:", error);
+
+        document.querySelector(".profile-layout").innerHTML = `
+            <div class="not-found">
+                <h2>Provider Not Found</h2>
+                <p>${error.message}</p>
+                <a href="explore.html" class="book-btn">
+                    Explore Services
+                </a>
+            </div>
+        `;
+    }
+}
+
+
+// CHECK EXISTING BOOKINGS
+
+async function checkExistingBooking() {
+
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
+    if (!token || !user || user.role !== "customer") {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(`${API_URL}/bookings/my-bookings`, {
+
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
 
         });
 
-    </script>
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Could not fetch bookings");
+        }
+
+        const bookings = data.bookings || [];
+
+        // Find the latest booking for this particular service
+        const matchingBookings = bookings
+            .filter(booking =>
+                String(booking.providerId?._id || booking.providerId) ===
+                String(providerId)
+            )
+            .sort((a, b) =>
+                new Date(b.createdAt) - new Date(a.createdAt)
+            );
+
+        if (matchingBookings.length > 0) {
+
+            existingBooking = matchingBookings[0];
+
+            updateBookingButton(existingBooking.status);
+
+        }
+
+    } catch (error) {
+
+        console.error("Booking history error:", error);
+
+    }
+}
+
+
+// CREATE BOOKING
+
+async function createBooking() {
+
+    const token = localStorage.getItem("token");
+
+    let user;
+
+    try {
+        user = JSON.parse(localStorage.getItem("user") || "null");
+    } catch {
+        user = null;
+    }
+
+    // CHECK LOGIN
+
+    if (!token || !user) {
+
+        alert("Please login to book this service.");
+
+        window.location.href =
+            "login.html?redirect=" +
+            encodeURIComponent(
+                "provider-details.html?id=" + providerId
+            );
+
+        return;
+    }
+
+    // CHECK CUSTOMER ROLE
+
+    if (user.role !== "customer") {
+
+        alert("Only customers can book services.");
+
+        return;
+    }
+
+    // PREVENT DUPLICATE ACTIVE BOOKINGS
+
+    if (existingBooking &&
+        ["pending", "accepted"].includes(existingBooking.status)) {
+
+        alert("You already have an active booking for this service.");
+
+        return;
+    }
+
+    // GET BOOKING DETAILS
+
+    const bookingDate = prompt(
+        "Enter booking date (YYYY-MM-DD):"
+    );
+
+    if (!bookingDate) return;
+
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+
+    if (!datePattern.test(bookingDate) ||
+        isNaN(Date.parse(bookingDate))) {
+
+        alert("Please enter a valid date in YYYY-MM-DD format.");
+
+        return;
+    }
+
+    const bookingTime = prompt(
+        "Enter preferred time (e.g. 10:00 AM):"
+    );
+
+    if (!bookingTime || !bookingTime.trim()) return;
+
+    const address = prompt(
+        "Enter your complete address:"
+    );
+
+    if (!address || !address.trim()) return;
+
+    // SEND BOOKING TO BACKEND
+
+    try {
+
+        bookButton.disabled = true;
+        bookButton.textContent = "Submitting...";
+
+        const response = await fetch(`${API_URL}/bookings`, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+
+            body: JSON.stringify({
+
+                providerId: providerId,
+                bookingDate: bookingDate,
+                bookingTime: bookingTime.trim(),
+                address: address.trim()
+
+            })
+
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+
+            if (response.status === 401) {
+                throw new Error("Your session has expired. Please log in again.");
+            }
+
+            throw new Error(data.message || "Booking failed");
+
+        }
+
+        existingBooking = data.booking;
+
+        updateBookingButton("pending");
+
+        alert(
+            "Booking request submitted successfully!\n\n" +
+            "Service: " + currentProvider.serviceName +
+            "\nStatus: Pending"
+        );
+
+    } catch (error) {
+
+        console.error("Booking error:", error);
+
+        alert(error.message);
+
+        bookButton.disabled = false;
+        bookButton.textContent = "Book This Service →";
+
+    }
+
+}
+
+
+// BOOK BUTTON EVENT
+
+bookButton.addEventListener("click", createBooking);
+
+
+// INITIAL LOAD
+
+loadProviderDetails();
+
+</script>
 
 </body>
+
 </html>

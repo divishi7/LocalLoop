@@ -74,25 +74,63 @@
     <h3>LocalLoop.</h3>
     <p>Discover Local Services. Compare. Connect.</p>
 </footer>
-
 <script>
-document.getElementById("signupForm").addEventListener("submit", function(event) {
+const API_URL = "http://localhost:5000/api";
+
+document.getElementById("signupForm").addEventListener("submit", async function(event) {
+
     event.preventDefault();
 
+    // Get form values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
+    const role = document.getElementById("role").value;
 
+    // Check password matching
     if (password !== confirmPassword) {
         alert("Passwords do not match!");
         return;
     }
 
-    alert("Signup form is ready! Backend integration will be added next.");
-});
+    // Connect to backend
+    try {
 
-document.getElementById("loginForm")?.addEventListener("submit", function(event) {
-    event.preventDefault();
-    alert("Login form is ready! Backend integration will be added next.");
+        const response = await fetch(`${API_URL}/auth/register`, {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+                role: role
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.message || "Registration failed!");
+            return;
+        }
+
+        alert("Account created successfully! Please login.");
+
+        window.location.href = "login.html";
+
+    } catch (error) {
+
+        console.error("Signup error:", error);
+
+        alert("Unable to connect to server. Please try again.");
+
+    }
+
 });
 </script>
 

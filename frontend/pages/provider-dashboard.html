@@ -2,788 +2,942 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provider Dashboard | LocalLoop</title>
 
-    <title>Provider Dashboard | LocalLoop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="provider-dashboard.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <link rel="stylesheet" href="provider-dashboard.css">
+<style>
+.service-modal {
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:rgba(20,15,30,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    overflow:auto;
+}
+.service-modal-content {
+    position:relative;
+    width:min(560px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:18px;
+    padding:28px;
+    font-family:"Plus Jakarta Sans",sans-serif;
+}
+.service-modal-content h2 { margin:10px 0; }
+.service-modal-content label {
+    display:block;
+    margin:14px 0 6px;
+    font-weight:600;
+}
+.service-modal-content input,
+.service-modal-content select,
+.service-modal-content textarea {
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:9px;
+    font:inherit;
+}
+.service-modal-content textarea { resize:vertical; }
+.modal-close {
+    position:absolute;
+    right:16px;
+    top:10px;
+    border:0;
+    background:none;
+    font-size:28px;
+    cursor:pointer;
+}
+#serviceFormMessage {
+    color:#b42318;
+    margin-top:12px;
+}
+#saveServiceButton {
+    margin-top:16px;
+    cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
-    <div class="provider-layout">
+<div class="provider-layout">
 
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-            <a href="../index.html" class="logo">
-                LocalLoop<span>.</span>
+        <a href="../index.html" class="logo">
+            LocalLoop<span>.</span>
+        </a>
+
+        <p class="sidebar-label">WORKSPACE</p>
+
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-item active">⌂ Overview</a>
+            <a href="#requests" class="nav-item">▣ Booking Requests</a>
+            <a href="#services" class="nav-item">✦ My Services</a>
+            <a href="#profile" class="nav-item">♙ My Profile</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="help-card">
+                <div class="help-icon">✦</div>
+                <h3>Need assistance?</h3>
+                <p>We're here to help you grow your local business.</p>
+                <a href="contact.html">Contact Support ↗</a>
+            </div>
+
+            <a href="../index.html" class="nav-item logout">
+                ↪ Log Out
             </a>
 
-            <p class="sidebar-label">WORKSPACE</p>
+        </div>
+    </aside>
 
-            <nav class="sidebar-nav">
 
-                <a href="#overview" class="nav-item active">
-                    ⌂ Overview
-                </a>
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="overview">
 
-                <a href="#requests" class="nav-item">
-                    ▣ Booking Requests
-                </a>
+        <!-- HEADER -->
+        <header class="topbar">
 
-                <a href="#services" class="nav-item">
-                    ✦ My Services
-                </a>
+            <div>
+                <p class="breadcrumb">Dashboard / Overview</p>
 
-                <a href="#profile" class="nav-item">
-                    ♙ My Profile
-                </a>
+                <h1>
+                    Hello, <span id="welcomeName">Provider!</span> 👋
+                </h1>
 
-            </nav>
+                <p class="topbar-subtitle">
+                    Here's an overview of your service business.
+                </p>
+            </div>
 
-            <div class="sidebar-bottom">
+            <div class="topbar-right">
+                <span class="demo-badge">PROVIDER ACCOUNT</span>
+                <div class="profile-avatar" id="topAvatar">P</div>
+            </div>
 
-                <div class="help-card">
+        </header>
 
-                    <div class="help-icon">✦</div>
 
-                    <h3>Need assistance?</h3>
+        <!-- BUSINESS PROFILE -->
+        <section class="provider-banner">
 
-                    <p>
-                        We're here to help you grow your local business.
+            <div class="provider-banner-icon">🏠</div>
+
+            <div class="provider-banner-info">
+                <p class="eyebrow">YOUR BUSINESS</p>
+                <h2 id="businessName">Loading...</h2>
+                <p id="businessLocation">Please wait...</p>
+            </div>
+
+            <span class="active-badge" id="businessStatus">
+                ● Active
+            </span>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Total Bookings</span>
+                    <div class="stat-icon">▣</div>
+                </div>
+                <h2 id="totalBookings">0</h2>
+                <p>All customer requests</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Pending Requests</span>
+                    <div class="stat-icon orange">◷</div>
+                </div>
+                <h2 id="pendingBookings">0</h2>
+                <p>Need your attention</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Accepted</span>
+                    <div class="stat-icon green">✓</div>
+                </div>
+                <h2 id="acceptedBookings">0</h2>
+                <p>Confirmed bookings</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Completed</span>
+                    <div class="stat-icon purple">✦</div>
+                </div>
+                <h2 id="completedBookings">0</h2>
+                <p>Successfully delivered</p>
+            </div>
+
+        </section>
+
+
+        <!-- BOOKING REQUESTS -->
+        <section class="requests-section" id="requests">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">MANAGE YOUR WORK</p>
+                    <h2>Booking Requests</h2>
+                    <p class="section-subtitle">
+                        Review and manage your customer bookings.
                     </p>
+                </div>
+            </div>
 
-                    <a href="contact.html">
-                        Contact Support ↗
-                    </a>
+            <div class="booking-filters">
+                <button class="filter-btn active" data-filter="all">All Bookings</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="accepted">Accepted</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
 
+            <div class="booking-list" id="bookingList">
+                <p class="demo-note">Loading bookings...</p>
+            </div>
+
+        </section>
+
+
+        <!-- MY SERVICES -->
+        <section class="services-section" id="services">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="eyebrow">YOUR LISTINGS</p>
+                    <h2>My Services</h2>
+                    <p class="section-subtitle">
+                        Manage the services you offer.
+                    </p>
                 </div>
 
-                <a href="../index.html" class="nav-item logout">
-                    ↪ Log Out
-                </a>
+                <button class="add-service-btn" id="openServiceForm">
+                    + Add Service
+                </button>
 
             </div>
 
-        </aside>
+            <div class="service-card" id="serviceCard">
+                <p class="demo-note">Loading service information...</p>
+            </div>
+
+        </section>
 
 
-        <!-- MAIN CONTENT -->
-        <main class="main-content" id="overview">
+        <!-- PROFILE -->
+        <section class="profile-section" id="profile">
 
-            <!-- HEADER -->
-            <header class="topbar">
-
+            <div class="section-heading">
                 <div>
-
-                    <p class="breadcrumb">
-                        Dashboard / Overview
+                    <p class="eyebrow">ACCOUNT SETTINGS</p>
+                    <h2>My Profile</h2>
+                    <p class="section-subtitle">
+                        Manage your professional information.
                     </p>
+                </div>
+            </div>
 
-                    <h1>
-                        Hello, <span>Rahul!</span> 👋
-                    </h1>
+            <div class="profile-card">
 
-                    <p class="topbar-subtitle">
-                        Here's an overview of your service business.
-                    </p>
+                <div class="profile-avatar large" id="profileAvatar">P</div>
 
+                <div class="profile-details">
+                    <h3 id="profileName">Provider</h3>
+                    <p id="profileEmail"></p>
+                    <span>Service Provider Account</span>
                 </div>
 
-                <div class="topbar-right">
-
-                    <span class="demo-badge">
-                        DEMO PREVIEW
-                    </span>
-
-                    <div class="profile-avatar">
-                        R
-                    </div>
-
-                </div>
-
-            </header>
-
-
-            <!-- BUSINESS PROFILE -->
-            <section class="provider-banner">
-
-                <div class="provider-banner-icon">
-                    🏠
-                </div>
-
-                <div class="provider-banner-info">
-
-                    <p class="eyebrow">
-                        YOUR BUSINESS
-                    </p>
-
-                    <h2>
-                        Home Cleaning Services
-                    </h2>
-
-                    <p>
-                        North Delhi · Home Services
-                    </p>
-
-                </div>
-
-                <span class="active-badge">
-                    ● Active
-                </span>
-
-            </section>
-
-
-            <!-- STATISTICS -->
-            <section class="stats-grid">
-
-                <div class="stat-card">
-
-                    <div class="stat-top">
-                        <span>Total Bookings</span>
-                        <div class="stat-icon">▣</div>
-                    </div>
-
-                    <h2 id="totalBookings">5</h2>
-
-                    <p>All customer requests</p>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-top">
-                        <span>Pending Requests</span>
-                        <div class="stat-icon orange">◷</div>
-                    </div>
-
-                    <h2 id="pendingBookings">2</h2>
-
-                    <p>Need your attention</p>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-top">
-                        <span>Accepted</span>
-                        <div class="stat-icon green">✓</div>
-                    </div>
-
-                    <h2 id="acceptedBookings">1</h2>
-
-                    <p>Confirmed bookings</p>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-top">
-                        <span>Completed</span>
-                        <div class="stat-icon purple">✦</div>
-                    </div>
-
-                    <h2 id="completedBookings">2</h2>
-
-                    <p>Successfully delivered</p>
-
-                </div>
-
-            </section>
-
-
-            <!-- BOOKING REQUESTS -->
-            <section class="requests-section" id="requests">
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <p class="eyebrow">
-                            MANAGE YOUR WORK
-                        </p>
-
-                        <h2>Booking Requests</h2>
-
-                        <p class="section-subtitle">
-                            Review and manage your customer bookings.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- FILTERS -->
-                <div class="booking-filters">
-
-                    <button class="filter-btn active" data-filter="all">
-                        All Bookings
-                    </button>
-
-                    <button class="filter-btn" data-filter="pending">
-                        Pending
-                    </button>
-
-                    <button class="filter-btn" data-filter="accepted">
-                        Accepted
-                    </button>
-
-                    <button class="filter-btn" data-filter="completed">
-                        Completed
-                    </button>
-
-                </div>
-
-
-                <!-- BOOKING LIST -->
-                <div class="booking-list" id="bookingList">
-
-
-                    <!-- BOOKING 1 -->
-                    <article class="booking-card" data-status="pending">
-
-                        <div class="customer-avatar">
-                            A
-                        </div>
-
-                        <div class="booking-info">
-
-                            <span class="booking-category">
-                                NEW REQUEST
-                            </span>
-
-                            <h3>Alfia Khatoon</h3>
-
-                            <p>Home Cleaning Service</p>
-
-                            <div class="booking-meta">
-
-                                <span>📅 20 November 2026</span>
-
-                                <span>◷ 11:00 AM</span>
-
-                                <span>📍 South Delhi</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="booking-right">
-
-                            <span class="status pending-status">
-                                Pending
-                            </span>
-
-                            <div class="booking-actions">
-
-                                <button class="accept-btn">
-                                    Accept
-                                </button>
-
-                                <button class="reject-btn">
-                                    Reject
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- BOOKING 2 -->
-                    <article class="booking-card" data-status="pending">
-
-                        <div class="customer-avatar avatar-two">
-                            S
-                        </div>
-
-                        <div class="booking-info">
-
-                            <span class="booking-category">
-                                NEW REQUEST
-                            </span>
-
-                            <h3>Simran Kapoor</h3>
-
-                            <p>Deep Home Cleaning</p>
-
-                            <div class="booking-meta">
-
-                                <span>📅 21 November 2026</span>
-
-                                <span>◷ 02:00 PM</span>
-
-                                <span>📍 East Delhi</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="booking-right">
-
-                            <span class="status pending-status">
-                                Pending
-                            </span>
-
-                            <div class="booking-actions">
-
-                                <button class="accept-btn">
-                                    Accept
-                                </button>
-
-                                <button class="reject-btn">
-                                    Reject
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- BOOKING 3 -->
-                    <article class="booking-card" data-status="accepted">
-
-                        <div class="customer-avatar avatar-three">
-                            P
-                        </div>
-
-                        <div class="booking-info">
-
-                            <span class="booking-category">
-                                CONFIRMED BOOKING
-                            </span>
-
-                            <h3>Priya Sharma</h3>
-
-                            <p>Home Cleaning Service</p>
-
-                            <div class="booking-meta">
-
-                                <span>📅 22 November 2026</span>
-
-                                <span>◷ 10:00 AM</span>
-
-                                <span>📍 Central Delhi</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="booking-right">
-
-                            <span class="status accepted-status">
-                                Accepted
-                            </span>
-
-                            <button class="complete-btn">
-                                Mark Completed
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- BOOKING 4 -->
-                    <article class="booking-card" data-status="completed">
-
-                        <div class="customer-avatar avatar-four">
-                            N
-                        </div>
-
-                        <div class="booking-info">
-
-                            <span class="booking-category">
-                                SERVICE COMPLETED
-                            </span>
-
-                            <h3>Neha Gupta</h3>
-
-                            <p>Regular Home Cleaning</p>
-
-                            <div class="booking-meta">
-
-                                <span>📅 12 November 2026</span>
-
-                                <span>◷ 12:00 PM</span>
-
-                                <span>📍 North Delhi</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="booking-right">
-
-                            <span class="status completed-status">
-                                Completed
-                            </span>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- BOOKING 5 -->
-                    <article class="booking-card" data-status="completed">
-
-                        <div class="customer-avatar avatar-five">
-                            M
-                        </div>
-
-                        <div class="booking-info">
-
-                            <span class="booking-category">
-                                SERVICE COMPLETED
-                            </span>
-
-                            <h3>Mehak Arora</h3>
-
-                            <p>Kitchen Cleaning</p>
-
-                            <div class="booking-meta">
-
-                                <span>📅 10 November 2026</span>
-
-                                <span>◷ 03:00 PM</span>
-
-                                <span>📍 West Delhi</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="booking-right">
-
-                            <span class="status completed-status">
-                                Completed
-                            </span>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-                <p class="demo-note">
-                    These are sample bookings displayed for the frontend demo.
-                </p>
-
-            </section>
-
-
-            <!-- MY SERVICES -->
-            <section class="services-section" id="services">
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <p class="eyebrow">
-                            YOUR LISTINGS
-                        </p>
-
-                        <h2>My Services</h2>
-
-                        <p class="section-subtitle">
-                            Manage the services you offer.
-                        </p>
-
-                    </div>
-
-                    <button
-                        class="add-service-btn"
-                        onclick="alert('Service creation will be connected with the backend.')"
-                    >
-                        + Add Service
-                    </button>
-
-                </div>
-
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-                        🏠
-                    </div>
-
-                    <div class="service-info">
-
-                        <span class="service-tag">
-                            HOME SERVICES
-                        </span>
-
-                        <h3>Home Cleaning</h3>
-
-                        <p>
-                            Professional home cleaning services for your everyday needs.
-                        </p>
-
-                        <span class="service-location">
-                            📍 North Delhi
-                        </span>
-
-                    </div>
-
-                    <div class="service-price">
-
-                        <span>Starting from</span>
-
-                        <h3>₹799</h3>
-
-                        <span>per service</span>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- PROFILE -->
-            <section class="profile-section" id="profile">
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <p class="eyebrow">
-                            ACCOUNT SETTINGS
-                        </p>
-
-                        <h2>My Profile</h2>
-
-                        <p class="section-subtitle">
-                            Manage your professional information.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="profile-card">
-
-                    <div class="profile-avatar large">
-                        R
-                    </div>
-
-                    <div class="profile-details">
-
-                        <h3>Rahul Sharma</h3>
-
-                        <p>rahul@example.com</p>
-
-                        <span>Service Provider Account</span>
-
-                    </div>
-
-                    <button
-                        class="edit-profile-btn"
-                        onclick="alert('Profile editing will be connected with the backend.')"
-                    >
-                        Edit Profile ↗
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- FOOTER -->
-            <footer class="dashboard-footer">
-                Grow your business. Serve your neighbourhood.
-                <span>♥</span>
-            </footer>
-
-        </main>
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="dashboard-footer">
+            Grow your business. Serve your neighbourhood.
+            <span>♥</span>
+        </footer>
+
+    </main>
+</div>
+
+
+<!-- CREATE SERVICE MODAL -->
+<div id="serviceModal" class="service-modal">
+
+    <div class="service-modal-content">
+
+        <button type="button" id="closeServiceForm" class="modal-close">
+            &times;
+        </button>
+
+        <p class="eyebrow">YOUR BUSINESS</p>
+        <h2>Create Your Service Profile</h2>
+
+        <p>Enter your details to list your service on LocalLoop.</p>
+
+        <form id="serviceForm">
+
+            <label>Service Name</label>
+            <input
+                type="text"
+                name="serviceName"
+                placeholder="e.g. Mathematics Tutor"
+                required
+            >
+
+            <label>Service Category</label>
+            <select name="category" id="serviceCategory" required>
+                <option value="">Select a category</option>
+            </select>
+
+            <label>Description</label>
+            <textarea
+                name="description"
+                rows="3"
+                placeholder="Describe the service you provide"
+                required
+            ></textarea>
+
+            <label>Experience (Years)</label>
+            <input
+                type="number"
+                name="experience"
+                min="0"
+                required
+            >
+
+            <label>Starting Price (₹)</label>
+            <input
+                type="number"
+                name="price"
+                min="0"
+                required
+            >
+
+            <label>Location</label>
+            <input
+                type="text"
+                name="location"
+                placeholder="e.g. North Delhi"
+                required
+            >
+
+            <label>Contact Number</label>
+            <input
+                type="tel"
+                name="contact"
+                placeholder="Enter contact number"
+                required
+            >
+
+            <p id="serviceFormMessage"></p>
+
+            <button type="submit" id="saveServiceButton" class="add-service-btn">
+                Create Service
+            </button>
+
+        </form>
 
     </div>
+</div>
 
 
-    <!-- JAVASCRIPT -->
-    <script>
+<!-- JAVASCRIPT -->
+<script>
 
-        // BOOKING FILTERS
+const API_URL = "http://localhost:5000/api";
 
-        const filterButtons = document.querySelectorAll(".filter-btn");
+const token = localStorage.getItem("token");
 
-        const bookingCards = document.querySelectorAll(".booking-card");
+const currentUser = JSON.parse(
+    localStorage.getItem("user") || "null"
+);
 
+let allBookings = [];
+let myProvider = null;
 
-        filterButtons.forEach(button => {
 
-            button.addEventListener("click", () => {
+// AUTHENTICATION
+if (!token || !currentUser) {
 
-                filterButtons.forEach(btn =>
-                    btn.classList.remove("active")
-                );
+    alert("Please log in first.");
+    window.location.href = "login.html";
 
-                button.classList.add("active");
+} else if (currentUser.role !== "provider") {
 
-                const filter = button.dataset.filter;
+    alert("This dashboard is only for service providers.");
 
-                bookingCards.forEach(card => {
+    window.location.href =
+        currentUser.role === "customer"
+            ? "customer-dashboard.html"
+            : "login.html";
+}
 
-                    card.style.display =
-                        filter === "all" || card.dataset.status === filter
-                            ? "flex"
-                            : "none";
 
-                });
+// HELPER
+function escapeHTML(value) {
 
-            });
+    return String(value ?? "").replace(
+        /[&<>"']/g,
+        char => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[char]
+    );
 
-        });
+}
 
 
-        // UPDATE STATISTICS
+function formatDate(value) {
 
-        function updateStats() {
+    if (!value) return "Date unavailable";
 
-            const cards = [
-                ...document.querySelectorAll(".booking-card")
-            ];
+    const date = new Date(value);
 
-            document.getElementById("totalBookings").textContent =
-                cards.length;
+    if (Number.isNaN(date.getTime())) {
+        return "Date unavailable";
+    }
 
-            document.getElementById("pendingBookings").textContent =
-                cards.filter(card =>
-                    card.dataset.status === "pending"
-                ).length;
+    return date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+    });
 
-            document.getElementById("acceptedBookings").textContent =
-                cards.filter(card =>
-                    card.dataset.status === "accepted"
-                ).length;
+}
 
-            document.getElementById("completedBookings").textContent =
-                cards.filter(card =>
-                    card.dataset.status === "completed"
-                ).length;
 
-        }
+// USER INFORMATION
+function updateUserInformation() {
 
+    const name = currentUser.name || "Provider";
+    const initial = name.charAt(0).toUpperCase();
 
-        // ACCEPT BOOKING
+    document.getElementById("welcomeName").textContent = name;
+    document.getElementById("topAvatar").textContent = initial;
+    document.getElementById("profileAvatar").textContent = initial;
+    document.getElementById("profileName").textContent = name;
 
-        document.querySelectorAll(".accept-btn").forEach(button => {
+    document.getElementById("profileEmail").textContent =
+        currentUser.email || "";
 
-            button.addEventListener("click", () => {
+}
 
-                const card = button.closest(".booking-card");
 
-                card.dataset.status = "accepted";
+// LOAD PROVIDER PROFILE
+async function loadProviderProfile() {
 
-                card.querySelector(".booking-category").textContent =
-                    "CONFIRMED BOOKING";
+    const response = await fetch(`${API_URL}/providers`);
+    const data = await response.json();
 
-                card.querySelector(".booking-right").innerHTML = `
-                    <span class="status accepted-status">
-                        Accepted
-                    </span>
+    if (!response.ok || !data.success) {
+        throw new Error(data.message || "Could not load provider profile.");
+    }
 
-                    <button class="complete-btn">
-                        Mark Completed
-                    </button>
-                `;
+    myProvider = (data.providers || []).find(provider => {
 
-                attachCompleteAction(card);
+        const userId = provider.userId?._id || provider.userId;
 
-                updateStats();
+        return String(userId) === String(currentUser.id);
 
-            });
+    });
 
-        });
 
+    if (!myProvider) {
 
-        // REJECT BOOKING
+        document.getElementById("businessName").textContent =
+            "No Service Profile Found";
 
-        document.querySelectorAll(".reject-btn").forEach(button => {
+        document.getElementById("businessLocation").textContent =
+            "Create your provider profile to list your service.";
 
-            button.addEventListener("click", () => {
+        document.getElementById("businessStatus").textContent =
+            "● Profile Required";
 
-                const confirmReject = confirm(
-                    "Are you sure you want to reject this booking?"
-                );
+        document.getElementById("serviceCard").innerHTML = `
+            <div class="service-info">
+                <h3>No service listed yet</h3>
+                <p>Create your provider profile to publish a service on LocalLoop.</p>
+            </div>
+        `;
 
-                if (confirmReject) {
-
-                    const card = button.closest(".booking-card");
-
-                    card.remove();
-
-                    updateStats();
-
-                }
-
-            });
-
-        });
-
-
-        // COMPLETE BOOKING
-
-        function attachCompleteAction(card) {
-
-            const button = card.querySelector(".complete-btn");
-
-            if (!button) return;
-
-            button.addEventListener("click", () => {
-
-                card.dataset.status = "completed";
-
-                card.querySelector(".booking-category").textContent =
-                    "SERVICE COMPLETED";
-
-                card.querySelector(".booking-right").innerHTML = `
-                    <span class="status completed-status">
-                        Completed
-                    </span>
-                `;
-
-                updateStats();
-
-            });
-
-        }
-
-
-        document.querySelectorAll(".complete-btn").forEach(button => {
-
-            attachCompleteAction(
-                button.closest(".booking-card")
-            );
-
-        });
-
-
-        // INITIALISE DASHBOARD
+        document.getElementById("bookingList").innerHTML = `
+            <p class="demo-note">
+                Create your service profile to receive customer bookings.
+            </p>
+        `;
 
         updateStats();
 
-    </script>
+        return;
+    }
+
+
+    document.getElementById("businessName").textContent =
+        myProvider.serviceName;
+
+    document.getElementById("businessLocation").textContent =
+        `${myProvider.location} · ${myProvider.category?.name || "Service"}`;
+
+    document.getElementById("businessStatus").textContent = "● Active";
+
+    renderMyService();
+
+}
+
+
+// DISPLAY MY SERVICE
+function renderMyService() {
+
+    if (!myProvider) return;
+
+    document.getElementById("serviceCard").innerHTML = `
+
+        <div class="service-icon">✦</div>
+
+        <div class="service-info">
+
+            <span class="service-tag">
+                ${escapeHTML((myProvider.category?.name || "SERVICE").toUpperCase())}
+            </span>
+
+            <h3>${escapeHTML(myProvider.serviceName)}</h3>
+
+            <p>${escapeHTML(myProvider.description || "")}</p>
+
+            <span class="service-location">
+                📍 ${escapeHTML(myProvider.location)}
+            </span>
+
+        </div>
+
+        <div class="service-price">
+            <span>Starting from</span>
+            <h3>₹${Number(myProvider.price).toLocaleString("en-IN")}</h3>
+            <span>per service</span>
+        </div>
+
+    `;
+
+}
+
+
+// LOAD BOOKINGS
+async function loadBookings() {
+
+    if (!myProvider) return;
+
+    const response = await fetch(
+        `${API_URL}/bookings/provider-bookings`,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+        throw new Error(data.message || "Could not load bookings.");
+    }
+
+    allBookings = data.bookings || [];
+
+    updateStats();
+    renderBookings();
+
+}
+
+
+// UPDATE STATISTICS
+function updateStats() {
+
+    document.getElementById("totalBookings").textContent =
+        allBookings.length;
+
+    document.getElementById("pendingBookings").textContent =
+        allBookings.filter(b => b.status === "pending").length;
+
+    document.getElementById("acceptedBookings").textContent =
+        allBookings.filter(b => b.status === "accepted").length;
+
+    document.getElementById("completedBookings").textContent =
+        allBookings.filter(b => b.status === "completed").length;
+
+}
+
+
+// RENDER BOOKINGS
+function renderBookings(filter = "all") {
+
+    const list = document.getElementById("bookingList");
+    list.innerHTML = "";
+
+    const filtered = allBookings.filter(b =>
+        filter === "all" || b.status === filter
+    );
+
+    if (!filtered.length) {
+
+        list.innerHTML = `
+            <p class="demo-note">
+                No ${filter === "all" ? "" : filter + " "}bookings found.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    filtered.forEach(booking => {
+
+        const customer =
+            booking.customerId &&
+            typeof booking.customerId === "object"
+                ? booking.customerId
+                : {};
+
+        const name = customer.name || "Customer";
+        const status = booking.status || "pending";
+
+        const card = document.createElement("article");
+        card.className = "booking-card";
+        card.dataset.status = status;
+
+        card.innerHTML = `
+
+            <div class="customer-avatar">
+                ${escapeHTML(name.charAt(0).toUpperCase())}
+            </div>
+
+            <div class="booking-info">
+
+                <span class="booking-category">
+                    ${escapeHTML(status.toUpperCase())}
+                </span>
+
+                <h3>${escapeHTML(name)}</h3>
+
+                <p>${escapeHTML(myProvider?.serviceName || "Service Booking")}</p>
+
+                <div class="booking-meta">
+                    <span>📅 ${formatDate(booking.bookingDate)}</span>
+                    <span>◷ ${escapeHTML(booking.bookingTime || "Time unavailable")}</span>
+                    <span>📍 ${escapeHTML(booking.address || "Address unavailable")}</span>
+                </div>
+
+            </div>
+
+            <div class="booking-right">
+
+                <span class="status ${escapeHTML(status)}-status">
+                    ${escapeHTML(status.charAt(0).toUpperCase() + status.slice(1))}
+                </span>
+
+                ${status === "pending" ? `
+                    <div class="booking-actions">
+                        <button class="accept-btn">Accept</button>
+                        <button class="reject-btn">Reject</button>
+                    </div>
+                ` : ""}
+
+                ${status === "accepted" ? `
+                    <button class="complete-btn">Mark Completed</button>
+                ` : ""}
+
+            </div>
+
+        `;
+
+
+        card.querySelector(".accept-btn")?.addEventListener("click", () => {
+            updateBookingStatus(booking._id, "accepted");
+        });
+
+        card.querySelector(".reject-btn")?.addEventListener("click", () => {
+
+            if (confirm("Are you sure you want to reject this booking?")) {
+                updateBookingStatus(booking._id, "rejected");
+            }
+
+        });
+
+        card.querySelector(".complete-btn")?.addEventListener("click", () => {
+            updateBookingStatus(booking._id, "completed");
+        });
+
+        list.appendChild(card);
+
+    });
+
+}
+
+
+// UPDATE BOOKING STATUS
+async function updateBookingStatus(id, status) {
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/bookings/${id}/status`,
+            {
+                method: "PATCH",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+
+                body: JSON.stringify({ status })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(data.message || "Could not update booking.");
+        }
+
+        alert(`Booking ${status} successfully!`);
+
+        await loadBookings();
+
+    } catch (error) {
+
+        alert(error.message);
+
+    }
+
+}
+
+
+// CREATE SERVICE PROFILE
+const modal = document.getElementById("serviceModal");
+const form = document.getElementById("serviceForm");
+const categorySelect = document.getElementById("serviceCategory");
+const formMessage = document.getElementById("serviceFormMessage");
+
+
+// OPEN FORM AND LOAD CATEGORIES
+document.getElementById("openServiceForm").addEventListener("click", async () => {
+
+    modal.style.display = "flex";
+    formMessage.textContent = "";
+
+    if (categorySelect.options.length <= 1) {
+
+        try {
+
+            const response = await fetch(`${API_URL}/categories`);
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                throw new Error(data.message || "Could not load categories.");
+            }
+
+            categorySelect.innerHTML =
+                '<option value="">Select a category</option>';
+
+            (data.categories || []).forEach(category => {
+
+                const option = document.createElement("option");
+
+                option.value = category._id;
+                option.textContent = category.name;
+
+                categorySelect.appendChild(option);
+
+            });
+
+        } catch (error) {
+
+            formMessage.textContent = error.message;
+
+        }
+
+    }
+
+});
+
+
+// CLOSE FORM
+document.getElementById("closeServiceForm").addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+modal.addEventListener("click", event => {
+
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+
+});
+
+
+// SUBMIT SERVICE FORM
+form.addEventListener("submit", async event => {
+
+    event.preventDefault();
+
+    const button = document.getElementById("saveServiceButton");
+    const formData = new FormData(form);
+
+    const payload = {
+
+        serviceName: formData.get("serviceName").trim(),
+
+        category: formData.get("category"),
+
+        description: formData.get("description").trim(),
+
+        experience: Number(formData.get("experience")),
+
+        price: Number(formData.get("price")),
+
+        location: formData.get("location").trim(),
+
+        contact: formData.get("contact").trim()
+
+    };
+
+
+    button.disabled = true;
+    button.textContent = "Creating...";
+    formMessage.textContent = "";
+
+
+    try {
+
+        const response = await fetch(`${API_URL}/providers`, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+
+            body: JSON.stringify(payload)
+
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(data.message || "Could not create service profile.");
+        }
+
+        alert("Your service profile has been created!");
+
+        form.reset();
+        modal.style.display = "none";
+
+        await loadProviderProfile();
+        await loadBookings();
+
+    } catch (error) {
+
+        formMessage.textContent = error.message;
+
+    } finally {
+
+        button.disabled = false;
+        button.textContent = "Create Service";
+
+    }
+
+});
+
+
+// FILTERS
+document.querySelectorAll(".filter-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        renderBookings(button.dataset.filter);
+
+    });
+
+});
+
+
+// LOGOUT
+document.querySelector(".logout").addEventListener("click", event => {
+
+    event.preventDefault();
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    window.location.href = "../index.html";
+
+});
+
+
+// INITIALIZE DASHBOARD
+async function initializeDashboard() {
+
+    if (!token || !currentUser || currentUser.role !== "provider") {
+        return;
+    }
+
+    updateUserInformation();
+
+    try {
+
+        await loadProviderProfile();
+        await loadBookings();
+
+    } catch (error) {
+
+        console.error("Dashboard error:", error);
+
+        document.getElementById("businessName").textContent =
+            "Unable to load profile";
+
+        document.getElementById("businessLocation").textContent =
+            error.message;
+
+    }
+
+}
+
+initializeDashboard();
+
+</script>
 
 </body>
-
 </html>
